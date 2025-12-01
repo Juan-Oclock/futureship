@@ -6,7 +6,22 @@
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
     <title>Futureship Strategy Advisor</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* Optimize font loading - display: swap prevents invisible text */
+    @font-face {
+      font-family: 'Poppins';
+      font-display: swap;
+      src: local('Poppins Regular'), local('Poppins-Regular'), url('https://fonts.gstatic.com/s/poppins/v20/pxiEypIAUbQ0E8eVYyA_4A.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Playfair Display';
+      font-display: swap;
+      src: local('Playfair Display'), local('PlayfairDisplay-Regular'), url('https://fonts.gstatic.com/s/playfairdisplay/v30/nuFvDpYS1F88TZJUEkrKg-8z4g.woff2') format('woff2');
+    }
+  </style>
     <style>
       :root {
         --background: oklch(1 0 0);
