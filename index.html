@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Futureship Strategy Advisor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --background: oklch(1 0 0);
+        --foreground: oklch(0.1450 0 0);
+        --card: oklch(1 0 0);
+        --card-foreground: oklch(0.1450 0 0);
+        --popover: oklch(1 0 0);
+        --popover-foreground: oklch(0.1450 0 0);
+        --primary: oklch(0.2050 0 0);
+        --primary-foreground: oklch(0.9850 0 0);
+        --secondary: oklch(0.9700 0 0);
+        --secondary-foreground: oklch(0.2050 0 0);
+        --muted: oklch(0.9700 0 0);
+        --muted-foreground: oklch(0.5560 0 0);
+        --accent: oklch(0.9700 0 0);
+        --accent-foreground: oklch(0.2050 0 0);
+        --destructive: oklch(0.5770 0.2450 27.3250);
+        --destructive-foreground: oklch(1 0 0);
+        --border: oklch(0.9220 0 0);
+        --input: oklch(0.9220 0 0);
+        --ring: oklch(0.7080 0 0);
+        --chart-1: oklch(0.8100 0.1000 252);
+        --chart-2: oklch(0.6200 0.1900 260);
+        --chart-3: oklch(0.5500 0.2200 263);
+        --chart-4: oklch(0.4900 0.2200 264);
+        --chart-5: oklch(0.4200 0.1800 266);
+        --radius: 0.625rem;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.1);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+      }
+
+      .dark {
+        --background: oklch(0.1450 0 0);
+        --foreground: oklch(0.9850 0 0);
+        --card: oklch(0.2050 0 0);
+        --card-foreground: oklch(0.9850 0 0);
+        --popover: oklch(0.2690 0 0);
+        --popover-foreground: oklch(0.9850 0 0);
+        --primary: oklch(0.9220 0 0);
+        --primary-foreground: oklch(0.2050 0 0);
+        --secondary: oklch(0.2690 0 0);
+        --secondary-foreground: oklch(0.9850 0 0);
+        --muted: oklch(0.2690 0 0);
+        --muted-foreground: oklch(0.7080 0 0);
+        --accent: oklch(0.3710 0 0);
+        --accent-foreground: oklch(0.9850 0 0);
+        --destructive: oklch(0.7040 0.1910 22.2160);
+        --destructive-foreground: oklch(0.9850 0 0);
+        --border: oklch(0.2750 0 0);
+        --input: oklch(0.3250 0 0);
+        --ring: oklch(0.5560 0 0);
+        --chart-1: oklch(0.8100 0.1000 252);
+        --chart-2: oklch(0.6200 0.1900 260);
+        --chart-3: oklch(0.5500 0.2200 263);
+        --chart-4: oklch(0.4900 0.2200 264);
+        --chart-5: oklch(0.4200 0.1800 266);
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--background);
+        color: var(--foreground);
+        -webkit-font-smoothing: antialiased;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Averia Serif Libre', serif;
+      }
+      /* Custom scrollbar for better aesthetics */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--muted-foreground);
+        border-radius: 4px;
+        opacity: 0.5;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--foreground);
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          container: {
+            center: true,
+            padding: "2rem",
+            screens: {
+              "2xl": "1400px",
+            },
+          },
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              heading: ['"Averia Serif Libre"', 'serif'],
+            },
+            colors: {
+              border: 'var(--border)',
+              input: 'var(--input)',
+              ring: 'var(--ring)',
+              background: 'var(--background)',
+              foreground: 'var(--foreground)',
+              primary: {
+                DEFAULT: 'var(--primary)',
+                foreground: 'var(--primary-foreground)',
+                hover: 'oklch(0.30 0 0)', // Slightly lighter black for hover
+                light: 'var(--muted)',
+              },
+              secondary: {
+                DEFAULT: 'var(--secondary)',
+                foreground: 'var(--secondary-foreground)',
+                hover: 'oklch(0.90 0 0)',
+                light: 'var(--background)',
+              },
+              destructive: {
+                DEFAULT: 'var(--destructive)',
+                foreground: 'var(--destructive-foreground)',
+              },
+              muted: {
+                DEFAULT: 'var(--muted)',
+                foreground: 'var(--muted-foreground)',
+              },
+              accent: {
+                DEFAULT: 'var(--accent)',
+                foreground: 'var(--accent-foreground)',
+              },
+              popover: {
+                DEFAULT: 'var(--popover)',
+                foreground: 'var(--popover-foreground)',
+              },
+              card: {
+                DEFAULT: 'var(--card)',
+                foreground: 'var(--card-foreground)',
+              },
+              neutral: {
+                dark: 'var(--foreground)',
+                medium: 'var(--muted-foreground)',
+                light: 'var(--muted)',
+              },
+              // Map legacy colors to new theme to preserve layout while changing look
+              jet_black: { 
+                DEFAULT: 'var(--foreground)',
+                400: 'var(--muted-foreground)',
+                500: 'var(--foreground)', 
+              },
+              silver: { 
+                DEFAULT: 'var(--muted)',
+                400: 'var(--muted-foreground)',
+                500: 'var(--muted)', 
+                600: 'var(--muted-foreground)',
+                900: 'var(--secondary)', // Light backgrounds
+              },
+              coral_glow: { 
+                DEFAULT: 'var(--primary)',
+                100: 'var(--secondary)',
+                200: 'var(--muted)',
+                300: 'var(--muted-foreground)',
+                400: 'var(--primary)',
+                500: 'var(--primary)', // Main Accent becomes Primary (Black)
+                600: 'var(--primary)',
+                900: 'var(--secondary)', // Light backgrounds
+              },
+              blue_slate: { 
+                DEFAULT: 'var(--muted-foreground)',
+                200: 'var(--border)',
+                500: 'var(--secondary-foreground)',
+                600: 'var(--foreground)',
+                900: 'var(--muted)',
+              }
+            },
+            borderRadius: {
+              lg: 'var(--radius)',
+              md: 'calc(var(--radius) - 2px)',
+              sm: 'calc(var(--radius) - 4px)',
+            },
+            boxShadow: {
+               sm: 'var(--shadow-sm)',
+               DEFAULT: 'var(--shadow)',
+               md: 'var(--shadow-md)',
+               lg: 'var(--shadow-lg)',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
