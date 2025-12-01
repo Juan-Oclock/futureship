@@ -59,7 +59,7 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
         {/* Full Background Image */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 bg-black">
           <video
             autoPlay
             loop
@@ -71,27 +71,10 @@ const Home: React.FC = () => {
               width: '100%',
               height: '100%'
             }}
-            onError={(e) => {
-              // If video fails to load, show fallback
-              const video = e.target as HTMLVideoElement;
-              video.style.display = 'none';
-            }}
           >
             <source src="/image/MAVTech-cinemagraph-lowres.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          {/* Fallback image for browsers that don't support video or if video fails to load */}
-          <img
-            src="/image/Forge Event-Stills-11.jpg"
-            alt="Futureship Strategy Background"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              objectFit: 'cover',
-              width: '100%',
-              height: '100%',
-              zIndex: -1
-            }}
-          />
           {/* Gradient Overlay for Text Readability */}
           <div className="absolute inset-0 bg-black/40"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/60 to-transparent"></div>
