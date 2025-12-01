@@ -77,7 +77,7 @@ const Home: React.FC = () => {
               video.style.display = 'none';
             }}
           >
-            <source src="/image/MAVTech-cinemagraph-lowres.webm" type="video/webm" />
+            <source src="/image/MAVTech-cinemagraph-lowres.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           {/* Fallback image for browsers that don't support video or if video fails to load */}
