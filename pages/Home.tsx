@@ -105,7 +105,9 @@ const Home: React.FC = () => {
               }}
               className="text-5xl md:text-7xl font-bold font-heading text-white tracking-tight leading-[1.1] mb-8"
             >
-              Maintain Strategic Focus in <br />
+              Maintain Strategic Focus
+              <br className="block md:hidden" />
+              <span className="hidden md:inline"> in </span>
               <span className="text-amber-200 italic underline decoration-amber-200/30 decoration-2 underline-offset-4">Uncertain Times.</span>
             </motion.h1>
             
