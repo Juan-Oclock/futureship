@@ -1,8 +1,107 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Target, Compass, Zap, Users, CheckCircle2 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Button from '../components/ui/Button';
+
+// Strategic Capabilities Section with scroll-linked fade and position
+const StrategicCapabilities: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  // Move from center (translateX: 25%) to left position (translateX: 0%) as section enters
+  const leftX = useTransform(scrollYProgress, [0, 0.2], ["25%", "0%"]);
+  
+  // Fade in at start, then fade out at end
+  const leftOpacity = useTransform(scrollYProgress, [0, 0.1, 0.7, 0.78], [0, 1, 1, 0]);
+  
+  // Chevron color animation - cycles through colors as cards reveal
+  const chevronColor = useTransform(
+    scrollYProgress, 
+    [0.1, 0.25, 0.4, 0.55, 0.7],
+    ["#1E3A5F", "#C9A227", "#1E3A5F", "#C9A227", "#1E3A5F"]
+  );
+
+  const services = [
+    {
+      title: "Collective Decision-Making",
+      desc: "Proven tools and techniques for groups to build consensus and make transparent decisions. We facilitate structured dialogue that transforms diverse perspectives into aligned action.",
+    },
+    {
+      title: "Advisory Partnership",
+      desc: "Extended engagements where deeper trust, insight, and strategic intimacy develop over time. We become an extension of your leadership team, providing ongoing counsel and support.",
+    },
+    {
+      title: "Scenario Planning",
+      desc: "Develop robust future scenarios to stress-test strategy and build organizational resilience. Our methodology helps you prepare for multiple futures while remaining agile.",
+    },
+    {
+      title: "Strategic Foresight",
+      desc: "Facilitated workshops and training to anticipate change and shape long-term strategy. We help leadership teams see around corners and identify emerging opportunities before competitors.",
+    },
+  ];
+
+  return (
+    <section ref={sectionRef} className="bg-white pt-32 lg:pt-40">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row">
+          {/* Left Side - Sticky Title */}
+          <div className="lg:w-[60%]">
+            <motion.div 
+              className="lg:sticky lg:top-1/2 lg:-translate-y-1/2"
+              style={{ opacity: leftOpacity, x: leftX }}
+            >
+              <div className="flex items-baseline gap-4">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-slate-900 leading-[1.1] whitespace-nowrap">
+                  Strategic Capabilities
+                </h2>
+                <motion.svg 
+                  className="w-7 h-7 hidden md:block flex-shrink-0 mt-2" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  style={{ stroke: chevronColor }}
+                  strokeWidth="2.5" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                >
+                  <path d="M6 4l8 8-8 8" />
+                  <path d="M12 4l8 8-8 8" />
+                </motion.svg>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right Side - Scrolling Services */}
+          <div className="lg:w-[40%] lg:pl-12 pb-32">
+            {services.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.4, margin: "-30% 0px -40% 0px" }}
+                transition={{ 
+                  opacity: { duration: 0.8, ease: "easeInOut" },
+                  y: { duration: 0.6, ease: "easeOut" }
+                }}
+                className="min-h-[30vh] lg:min-h-[45vh] flex flex-col justify-center py-8 lg:py-16"
+              >
+                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-base text-slate-500 leading-relaxed max-w-lg">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const Home: React.FC = () => {
   const fadeInUp = {
@@ -160,14 +259,14 @@ const Home: React.FC = () => {
             >
               {[...Array(2)].map((_, setIndex) => (
                 <div key={setIndex} className="flex items-center gap-16">
-                  <span className="text-xl font-semibold text-slate-500 whitespace-nowrap">Meridian Partners</span>
-                  <span className="text-xl font-semibold text-slate-500 whitespace-nowrap">Apex Council</span>
-                  <span className="text-xl font-bold text-slate-500 tracking-wide whitespace-nowrap">NORTHGATE</span>
-                  <span className="text-xl font-semibold text-slate-500 whitespace-nowrap">Vanguard Group</span>
-                  <span className="text-xl font-semibold text-slate-500 whitespace-nowrap">Sterling & Co</span>
-                  <span className="text-xl font-semibold text-slate-500 whitespace-nowrap">Horizon Capital</span>
-                  <span className="text-xl font-bold text-slate-500 tracking-wider whitespace-nowrap">BLACKWOOD</span>
-                  <span className="text-xl font-semibold text-slate-500 whitespace-nowrap">Atlas Ventures</span>
+                  <span className="text-xl font-semibold text-slate-400 whitespace-nowrap">Meridian Partners</span>
+                  <span className="text-xl font-semibold text-slate-400 whitespace-nowrap">Apex Council</span>
+                  <span className="text-xl font-bold text-slate-400 tracking-wide whitespace-nowrap">NORTHGATE</span>
+                  <span className="text-xl font-semibold text-slate-400 whitespace-nowrap">Vanguard Group</span>
+                  <span className="text-xl font-semibold text-slate-400 whitespace-nowrap">Sterling & Co</span>
+                  <span className="text-xl font-semibold text-slate-400 whitespace-nowrap">Horizon Capital</span>
+                  <span className="text-xl font-bold text-slate-400 tracking-wider whitespace-nowrap">BLACKWOOD</span>
+                  <span className="text-xl font-semibold text-slate-400 whitespace-nowrap">Atlas Ventures</span>
                 </div>
               ))}
             </motion.div>
@@ -182,14 +281,14 @@ const Home: React.FC = () => {
             >
               {[...Array(2)].map((_, setIndex) => (
                 <div key={setIndex} className="flex items-center gap-16">
-                  <span className="text-xl font-semibold text-slate-500 whitespace-nowrap">Pinnacle Advisory</span>
-                  <span className="text-xl font-bold text-slate-500 tracking-wide whitespace-nowrap">SUMMIT</span>
-                  <span className="text-xl font-semibold text-slate-500 whitespace-nowrap">Evergreen Trust</span>
-                  <span className="text-xl font-semibold text-slate-500 whitespace-nowrap">Keystone Group</span>
-                  <span className="text-xl font-bold text-slate-500 whitespace-nowrap">NEXUS</span>
-                  <span className="text-xl font-semibold text-slate-500 whitespace-nowrap">Catalyst Partners</span>
-                  <span className="text-xl font-semibold text-slate-500 whitespace-nowrap">Bridgewater Co</span>
-                  <span className="text-xl font-bold text-slate-500 tracking-wider whitespace-nowrap">FORTIS</span>
+                  <span className="text-xl font-semibold text-slate-400 whitespace-nowrap">Pinnacle Advisory</span>
+                  <span className="text-xl font-bold text-slate-400 tracking-wide whitespace-nowrap">SUMMIT</span>
+                  <span className="text-xl font-semibold text-slate-400 whitespace-nowrap">Evergreen Trust</span>
+                  <span className="text-xl font-semibold text-slate-400 whitespace-nowrap">Keystone Group</span>
+                  <span className="text-xl font-bold text-slate-400 whitespace-nowrap">NEXUS</span>
+                  <span className="text-xl font-semibold text-slate-400 whitespace-nowrap">Catalyst Partners</span>
+                  <span className="text-xl font-semibold text-slate-400 whitespace-nowrap">Bridgewater Co</span>
+                  <span className="text-xl font-bold text-slate-400 tracking-wider whitespace-nowrap">FORTIS</span>
                 </div>
               ))}
             </motion.div>
@@ -197,74 +296,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Value Proposition */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.8, delay: 0 }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <span className="text-[11px] font-semibold text-navy uppercase tracking-[0.2em] mb-4 block">Our Expertise</span>
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-slate-900 mb-5">Strategic Capabilities</h2>
-            <p className="text-lg text-slate-500 leading-relaxed">
-              We equip leadership teams with proven frameworks and methodologies to navigate complexity and drive meaningful outcomes.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {[
-              {
-                icon: Compass,
-                title: "Strategic Foresight",
-                desc: "Facilitated workshops and training to anticipate change and shape long-term strategy.",
-              },
-              {
-                icon: Target,
-                title: "Scenario Planning",
-                desc: "Develop robust future scenarios to stress-test strategy and build organizational resilience.",
-              },
-              {
-                icon: Users,
-                title: "Collective Decision Making",
-                desc: "Proven tools and techniques for groups to build consensus and make transparent decisions.",
-              },
-              {
-                icon: Zap,
-                title: "Advisory Partnerships",
-                desc: "Extended engagements where deeper trust, insight, and strategic intimacy develop over time.",
-              }
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.1 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.1 * idx,
-                  ease: [0.25, 0.1, 0.25, 1]
-                }}
-                className="group p-8 rounded-xl bg-white border border-slate-200/60 hover:border-navy/20 hover:shadow-lg hover:shadow-navy/5 transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-lg bg-navy/5 group-hover:bg-navy group-hover:text-white flex items-center justify-center mb-5 transition-all duration-300">
-                  <item.icon className="h-6 w-6 text-navy group-hover:text-white transition-colors" />
-                </div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-3">{item.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      {/* Strategic Capabilities - Scroll Reveal */}
+      <StrategicCapabilities />
 
       {/* Methodology Section */}
       <section className="py-24 bg-slate-900 relative overflow-hidden">
@@ -550,7 +583,7 @@ const Home: React.FC = () => {
               <br />
               <span className="text-gold">with clarity?</span>
             </h2>
-            <p className="text-lg text-slate-300 mb-10 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto">
               Let's discuss how we can help your leadership team navigate complexity and make decisions that drive lasting impact.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
