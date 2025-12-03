@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import Button from '../components/ui/Button';
 import { motion } from 'framer-motion';
-import ScrollReveal from '../components/animations/ScrollReveal';
-import StaggerReveal from '../components/animations/StaggerReveal';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -58,7 +56,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-bold font-heading text-neutral-dark">Email Us</h3>
-                  <p className="text-neutral-medium">hello@futureship.advisor</p>
+                  <p className="text-neutral-medium">hello@thewayfwd.co</p>
                 </div>
               </motion.div>
               

@@ -1,75 +1,95 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Rocket } from 'lucide-react';
+import { ChevronRight, Linkedin, Twitter } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-neutral-light border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-slate-900 border-t border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           {/* Brand Column */}
-          <div className="col-span-1 md:col-span-1">
-            <Link to="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center text-white">
-                <Rocket size={18} />
+          <div className="md:col-span-4">
+            <Link to="/" className="flex items-center space-x-2 mb-5 group">
+              <svg 
+                className="w-9 h-9 transition-transform duration-200 group-hover:translate-x-0.5" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <path d="M6 4l8 8-8 8" stroke="#64748b" />
+                <path d="M12 4l8 8-8 8" stroke="#ffffff" />
+              </svg>
+              <div className="flex flex-col">
+                <span className="text-lg font-semibold text-white tracking-tight leading-none">thewayfwd</span>
+                <span className="text-[10px] uppercase tracking-[0.15em] text-slate-500 font-medium">Strategic Advisory</span>
               </div>
-              <span className="text-lg font-bold font-heading text-neutral-dark">Futureship.</span>
             </Link>
-            <p className="text-neutral-medium text-sm leading-relaxed mb-6">
-              Helping forward-thinking organizations navigate uncertainty and build a resilient future through strategic foresight. We empower leaders with the tools, frameworks, and insights needed to anticipate change and make confident, collective decisions in an increasingly complex world.
+            <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm">
+              Guiding organizations forward through uncertainty with strategic clarity. We empower leaders to make confident, collective decisions.
             </p>
+            <div className="flex space-x-3">
+              <a href="#" className="w-9 h-9 rounded-md bg-slate-800 hover:bg-slate-700 flex items-center justify-center transition-colors">
+                <Linkedin className="w-4 h-4 text-slate-400" />
+              </a>
+              <a href="#" className="w-9 h-9 rounded-md bg-slate-800 hover:bg-slate-700 flex items-center justify-center transition-colors">
+                <Twitter className="w-4 h-4 text-slate-400" />
+              </a>
+            </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-sm font-semibold font-heading text-neutral-dark uppercase tracking-wider mb-4">Services</h3>
+          {/* Services */}
+          <div className="md:col-span-2">
+            <h3 className="text-[11px] font-semibold text-slate-300 uppercase tracking-[0.15em] mb-5">Services</h3>
             <ul className="space-y-3">
-              <li><Link to="/services" className="text-neutral-medium hover:text-primary text-sm">Strategic Foresight</Link></li>
-              <li><Link to="/services" className="text-neutral-medium hover:text-primary text-sm">Scenario Planning</Link></li>
-              <li><Link to="/services" className="text-neutral-medium hover:text-primary text-sm">Innovation Strategy</Link></li>
-              <li><Link to="/services" className="text-neutral-medium hover:text-primary text-sm">Organizational Readiness</Link></li>
+              <li><Link to="/services" className="text-slate-400 hover:text-white text-sm transition-colors">Strategic Foresight</Link></li>
+              <li><Link to="/services" className="text-slate-400 hover:text-white text-sm transition-colors">Scenario Planning</Link></li>
+              <li><Link to="/services" className="text-slate-400 hover:text-white text-sm transition-colors">Decision Making</Link></li>
+              <li><Link to="/services" className="text-slate-400 hover:text-white text-sm transition-colors">Advisory Partnerships</Link></li>
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-sm font-semibold font-heading text-neutral-dark uppercase tracking-wider mb-4">Company</h3>
+          {/* Company */}
+          <div className="md:col-span-2">
+            <h3 className="text-[11px] font-semibold text-slate-300 uppercase tracking-[0.15em] mb-5">Company</h3>
             <ul className="space-y-3">
-              <li><Link to="/about" className="text-neutral-medium hover:text-primary text-sm">About Us</Link></li>
-              <li><Link to="/case-studies" className="text-neutral-medium hover:text-primary text-sm">Case Studies</Link></li>
-              <li><Link to="/contact" className="text-neutral-medium hover:text-primary text-sm">Contact</Link></li>
+              <li><Link to="/about" className="text-slate-400 hover:text-white text-sm transition-colors">About Us</Link></li>
+              <li><Link to="/case-studies" className="text-slate-400 hover:text-white text-sm transition-colors">Case Studies</Link></li>
+              <li><Link to="/contact" className="text-slate-400 hover:text-white text-sm transition-colors">Contact</Link></li>
             </ul>
           </div>
 
           {/* Newsletter */}
-          <div>
-            <h3 className="text-sm font-semibold font-heading text-neutral-dark uppercase tracking-wider mb-4">Stay Ahead</h3>
-            <p className="text-neutral-medium text-sm mb-4">
-              Subscribe to our insights for the latest trends and future strategies.
+          <div className="md:col-span-4">
+            <h3 className="text-[11px] font-semibold text-slate-300 uppercase tracking-[0.15em] mb-5">Stay Informed</h3>
+            <p className="text-slate-400 text-sm mb-4">
+              Subscribe for insights on strategic foresight and governance.
             </p>
-            <form className="flex flex-col space-y-2">
+            <form className="flex space-x-2">
               <input 
                 type="email" 
                 placeholder="Enter your email" 
-                className="h-11 px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm w-full"
+                className="flex-1 h-10 px-4 bg-slate-800 border border-slate-700 rounded-md focus:ring-1 focus:ring-gold focus:border-gold text-sm text-white placeholder-slate-500 outline-none transition-colors"
               />
-              <button className="h-11 bg-neutral-dark text-white px-4 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors w-full">
+              <button className="h-10 bg-gold hover:bg-gold-400 text-slate-900 px-5 rounded-md text-sm font-semibold transition-colors">
                 Subscribe
               </button>
             </form>
           </div>
         </div>
         
-        <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-neutral-medium text-sm">
-            &copy; {new Date().getFullYear()} Futureship Strategy Advisor. All rights reserved.
+        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-slate-500 text-sm">
+            &copy; {new Date().getFullYear()} The Way Forward. All rights reserved.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0 items-center">
-            <span className="text-neutral-medium text-sm">Melbourne</span>
-            <span className="text-gray-300">•</span>
-            <span className="text-neutral-medium text-sm">Sydney</span>
-            <span className="text-gray-300">•</span>
-            <span className="text-neutral-medium text-sm">London</span>
+          <div className="flex space-x-6 mt-4 md:mt-0 items-center text-sm text-slate-500">
+            <span>Melbourne</span>
+            <span className="text-slate-700">•</span>
+            <span>Sydney</span>
+            <span className="text-slate-700">•</span>
+            <span>London</span>
           </div>
         </div>
       </div>

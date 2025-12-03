@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, Rocket } from 'lucide-react';
+import { Menu, X, ChevronRight } from 'lucide-react';
 import Button from '../ui/Button';
 
 const Navbar: React.FC = () => {
@@ -29,86 +29,104 @@ const Navbar: React.FC = () => {
     { name: 'About', path: '/about' },
   ];
 
-  // Determine styles based on state
+  // Determine styles based on state - now hero is light themed
   const isTransparent = isHome && !scrolled;
   
   const navBackground = isTransparent 
-    ? 'bg-transparent py-6' 
-    : 'bg-white/95 backdrop-blur-md shadow-sm py-4';
+    ? 'bg-transparent py-5' 
+    : 'bg-white shadow-sm border-b border-slate-100 py-4';
 
-  const textColor = isTransparent ? 'text-white' : 'text-neutral-dark';
-  const logoColor = isTransparent ? 'text-white' : 'text-neutral-dark';
-  // Hover color: light coral when transparent, primary (coral) when white
-  const linkHoverColor = isTransparent ? 'hover:text-gray-300' : 'hover:text-primary';
-  const activeLinkColor = isTransparent ? 'text-white underline underline-offset-4' : 'text-primary';
-  const mobileMenuBtnColor = isTransparent ? 'text-white hover:bg-white/10' : 'text-neutral-dark hover:bg-neutral-light';
+  // Both states now use dark text since hero is light
+  const textColor = 'text-slate-700';
+  const logoColor = 'text-slate-900';
+  const linkHoverColor = 'hover:text-navy';
+  const activeLinkColor = 'text-navy font-semibold';
+  const mobileMenuBtnColor = 'text-slate-700 hover:bg-slate-100';
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${navBackground}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ease-out ${navBackground}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <NavLink to="/" className="flex items-center space-x-2 group">
-            <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-white transition-transform group-hover:scale-105 ${isTransparent ? 'bg-white/20 backdrop-blur-md' : 'bg-primary'}`}>
-              <Rocket size={24} />
+            <svg 
+              className="w-9 h-9 text-navy transition-transform duration-200 group-hover:translate-x-0.5" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2.5" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <path d="M6 4l8 8-8 8" />
+              <path d="M12 4l8 8-8 8" />
+            </svg>
+            <div className="flex flex-col">
+              <span className={`text-lg font-semibold tracking-tight transition-colors leading-none ${logoColor}`}>
+                thewayfwd
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-semibold">
+                Strategic Advisory
+              </span>
             </div>
-            <span className={`text-xl font-bold font-heading tracking-tight transition-colors ${logoColor}`}>
-              Futureship<span className={isTransparent ? 'text-amber-200' : 'text-primary'}>.</span>
-            </span>
           </NavLink>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-1">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
                 className={({ isActive }) => 
-                  `text-sm font-medium transition-colors ${isActive ? activeLinkColor : textColor} ${linkHoverColor}`
+                  `px-4 py-2 text-sm tracking-wide transition-all duration-200 rounded-md ${isActive ? activeLinkColor : textColor} ${linkHoverColor}`
                 }
               >
                 {link.name}
               </NavLink>
             ))}
-            <NavLink to="/contact">
-              <Button 
-                size="sm" 
-                className={isTransparent ? '!bg-transparent border border-white !text-white hover:!bg-white hover:!text-black' : ''}
-              >
-                Get Started
-              </Button>
-            </NavLink>
+            <div className={`ml-4 pl-4 border-l ${isTransparent ? 'border-slate-200' : 'border-slate-200'}`}>
+              <NavLink to="/contact">
+                <Button 
+                  size="sm" 
+                  className="!bg-navy hover:!bg-navy-800 !text-white font-medium shadow-sm hover:shadow-md"
+                >
+                  Get Started
+                </Button>
+              </NavLink>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`md:hidden p-2 rounded-md focus:outline-none transition-colors ${mobileMenuBtnColor}`}
+            className={`md:hidden p-2.5 rounded-lg focus:outline-none transition-colors ${mobileMenuBtnColor}`}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-lg p-4 flex flex-col space-y-4 animate-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-xl p-5 flex flex-col space-y-2">
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
               to={link.path}
               className={({ isActive }) =>
-                `block px-4 py-2 rounded-md text-base font-medium ${
-                  isActive ? 'bg-gray-100 text-primary' : 'text-neutral-dark hover:bg-neutral-light'
+                `block px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                  isActive ? 'bg-navy/5 text-navy' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                 }`
               }
             >
               {link.name}
             </NavLink>
           ))}
-          <NavLink to="/contact" className="w-full">
-            <Button className="w-full justify-center">Get Started</Button>
-          </NavLink>
+          <div className="pt-3 mt-2 border-t border-slate-100">
+            <NavLink to="/contact" className="w-full">
+              <Button className="w-full justify-center !bg-navy hover:!bg-navy-800">Get Started</Button>
+            </NavLink>
+          </div>
         </div>
       )}
     </nav>

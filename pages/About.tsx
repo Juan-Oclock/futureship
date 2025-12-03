@@ -1,7 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import ScrollReveal from '../components/animations/ScrollReveal';
-import StaggerReveal from '../components/animations/StaggerReveal';
 
 const About: React.FC = () => {
   const team = [
@@ -58,7 +56,7 @@ const About: React.FC = () => {
                With expanding governance requirements, growing operational complexity, and increasing uncertainty, many leaders are struggling to maintain a strategic focus.
              </p>
              <p className="text-neutral-medium leading-relaxed">
-               Futureship was born to solve this. We are particularly applicable to groups who make high-value, long-term decisions in governance-rich environments. We help new councillor groups transition from campaigning to collective decision making, and we work with boards to build trust and a sense of collective purpose.
+               The Way Forward was born to solve this. We are particularly applicable to groups who make high-value, long-term decisions in governance-rich environments. We help new councillor groups transition from campaigning to collective decision making, and we work with boards to build trust and a sense of collective purpose.
              </p>
            </motion.div>
         </div>

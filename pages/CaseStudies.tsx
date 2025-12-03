@@ -124,7 +124,7 @@ const CaseStudies: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <h2 className="text-3xl font-bold font-heading text-neutral-dark mb-8 text-center">
-              The Futureship Effect: Measurable Strategic Outcomes
+              The Way Forward Effect: Measurable Strategic Outcomes
             </h2>
             <p className="text-lg text-center text-neutral-600 mb-12">
               Four-year partnership delivering consistent improvements in organizational readiness and market positioning
