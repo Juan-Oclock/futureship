@@ -4,7 +4,8 @@ import { Compass, Target, Lightbulb, Users, Globe, Shield, MessageSquare, ArrowR
 import Button from '../components/ui/Button';
 import { Link, useLocation } from 'react-router-dom';
 import ScrollReveal from '../components/animations/ScrollReveal';
-import StaggerReveal from '../components/animations/StaggerReveal';
+import TextMarquee from '../components/animations/TextMarquee';
+import StatsHighlight from '../components/sections/StatsHighlight';
 
 const Services: React.FC = () => {
   const { hash } = useLocation();
@@ -19,13 +20,6 @@ const Services: React.FC = () => {
     }
   }, [hash]);
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.6 }
-  };
-
   const services = [
     {
       id: 'futurist',
@@ -39,7 +33,7 @@ const Services: React.FC = () => {
       id: 'scenario',
       icon: Globe,
       title: 'Future Scenarios',
-      desc: 'Developing plausible alternative futures to help shape an organization\'s long-term strategy and test robustness.',
+      desc: 'Developing plausible alternative futures to help shape an organisation\'s long-term strategy and test robustness.',
       features: ['Scenario Workshops', 'Strategy Stress-Testing', 'Contingency Planning'],
       color: 'secondary'
     },
@@ -47,8 +41,8 @@ const Services: React.FC = () => {
       id: 'risk',
       icon: Shield,
       title: 'Strategic Risk Workshops',
-      desc: 'Facilitated sessions to identify, compare, and prioritize strategic opportunities and risks in a complex environment.',
-      features: ['Risk Identification', 'Opportunity Prioritization', 'Mitigation Strategies'],
+      desc: 'Facilitated sessions to identify, compare, and prioritise strategic opportunities and risks in a complex environment.',
+      features: ['Risk Identification', 'Opportunity Prioritisation', 'Mitigation Strategies'],
       color: 'accent'
     },
     {
@@ -90,33 +84,77 @@ const Services: React.FC = () => {
     return map[color] ? map[color][type] : map['primary'][type];
   }
 
+  // Marquee items for services
+  const marqueeItems = [
+    "Strategic Foresight",
+    "Scenario Planning",
+    "Board Advisory",
+    "Governance",
+    "Decision Making",
+    "Leadership",
+    "Consensus Building",
+    "Risk Management",
+  ];
+
+  // Stats for services page
+  const serviceStats = [
+    { value: 100, suffix: "%", label: "Client Retention", decimals: 0 },
+    { value: 15, suffix: "+", label: "Years Experience", decimals: 0 },
+    { value: 200, suffix: "+", label: "Workshops Delivered", decimals: 0 },
+    { value: 50, suffix: "+", label: "Organisations Served", decimals: 0 },
+  ];
+
   return (
-    <div className="pt-24 min-h-screen bg-silver-900/50">
+    <div className="min-h-screen bg-slate-50">
       
-      {/* Services Header with Image */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <motion.div 
-          {...fadeInUp}
-          className="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-gray-100 flex flex-col lg:flex-row items-center gap-12"
-        >
-           <div className="lg:w-1/2">
-             <div className="inline-block bg-coral_glow-900 text-coral_glow-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
-               Expertise
-             </div>
-             <h1 className="text-4xl md:text-5xl font-bold font-heading text-neutral-dark mb-6">Our Services</h1>
-             <p className="text-xl text-neutral-medium leading-relaxed">
-               As governance requirements expand and operational complexity grows, leaders often struggle to maintain strategic focus. We offer engaging and effective approaches to bridge the gap.
-             </p>
-           </div>
-           <div className="lg:w-1/2 relative h-64 lg:h-80 w-full rounded-2xl overflow-hidden shadow-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1000" 
-                alt="Strategy planning on tablet" 
-                className="w-full h-full object-cover"
-              />
-           </div>
-        </motion.div>
-      </div>
+      {/* Hero Section - Full Width */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-navy">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=2000" 
+            alt="Strategy planning" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/95 to-navy/80"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-32 pb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
+          >
+            <span className="text-[11px] font-semibold text-gold uppercase tracking-[0.2em] mb-4 block">
+              Our Expertise
+            </span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-heading text-white mb-8 leading-[1.05]">
+              Strategic Advisory
+              <span className="text-gold"> Solutions</span>
+            </h1>
+            <p className="text-xl text-slate-300 leading-relaxed max-w-2xl">
+              As governance requirements expand and operational complexity grows, leaders often struggle to maintain strategic focus. We offer engaging and effective approaches to bridge the gap.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Scrolling Marquee */}
+      <section className="py-6 bg-slate-900 overflow-hidden border-b border-slate-800">
+        <TextMarquee 
+          items={marqueeItems}
+          speed={25}
+          className="text-xl md:text-2xl font-semibold text-white/80"
+          separator={<span className="mx-6 text-gold">•</span>}
+        />
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <StatsHighlight stats={serviceStats} variant="light" />
+        </div>
+      </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">

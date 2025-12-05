@@ -40,7 +40,7 @@ const Contact: React.FC = () => {
           >
             <h1 className="text-4xl font-bold font-heading text-neutral-dark mb-6">Let's Shape Your Future</h1>
             <p className="text-lg text-neutral-medium mb-12">
-              Ready to stop guessing and start planning? Reach out to discuss how our foresight strategies can transform your organization.
+              Ready to stop guessing and start planning? Reach out to discuss how our foresight strategies can transform your organisation.
             </p>
 
             <div className="space-y-8">

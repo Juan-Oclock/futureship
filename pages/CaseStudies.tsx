@@ -127,7 +127,7 @@ const CaseStudies: React.FC = () => {
               The Way Forward Effect: Measurable Strategic Outcomes
             </h2>
             <p className="text-lg text-center text-neutral-600 mb-12">
-              Four-year partnership delivering consistent improvements in organizational readiness and market positioning
+              Four-year partnership delivering consistent improvements in organisational readiness and market positioning
             </p>
           </div>
           <ResponsiveContainer width="100%" height="400" className="mb-12">

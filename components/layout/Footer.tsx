@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
               </div>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm">
-              Guiding organizations forward through uncertainty with strategic clarity. We empower leaders to make confident, collective decisions.
+              Guiding organisations forward through uncertainty with strategic clarity. We empower leaders to make confident, collective decisions.
             </p>
             <div className="flex space-x-3">
               <a href="#" className="w-9 h-9 rounded-md bg-slate-800 hover:bg-slate-700 flex items-center justify-center transition-colors">
