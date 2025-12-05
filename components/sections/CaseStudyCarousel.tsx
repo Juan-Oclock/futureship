@@ -47,7 +47,7 @@ const CaseStudyCarousel: React.FC<CaseStudyCarouselProps> = ({ cases, className 
                 {/* Featured badge */}
                 {caseStudy.featured && (
                   <div className="absolute top-4 left-4 z-20">
-                    <span className="bg-gold text-slate-900 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                    <span className="bg-white text-navy text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                       Featured
                     </span>
                   </div>
@@ -77,7 +77,7 @@ const CaseStudyCarousel: React.FC<CaseStudyCarouselProps> = ({ cases, className 
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-navy transition-colors">
                     {caseStudy.title}
                   </h3>
-                  <p className="text-gold font-semibold text-sm mb-4">{caseStudy.result}</p>
+                  <p className="text-navy font-semibold text-sm mb-4">{caseStudy.result}</p>
 
                   {/* Read more link */}
                   <div className="flex items-center text-navy font-medium text-sm group-hover:translate-x-2 transition-transform duration-300">

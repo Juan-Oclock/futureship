@@ -377,7 +377,7 @@ const Home: React.FC = () => {
       {/* Methodology Section */}
       <section className="py-24 lg:py-32 bg-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-navy-900 to-slate-900"></div>
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-gold/5 to-transparent pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row gap-16 lg:gap-20">
@@ -386,7 +386,7 @@ const Home: React.FC = () => {
             <div className="lg:w-5/12">
               <div className="lg:sticky lg:top-32">
                 <ScrollReveal direction="left">
-                  <span className="text-[11px] font-semibold text-gold uppercase tracking-[0.2em] mb-4 block">Our Approach</span>
+                  <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-[0.2em] mb-4 block">Our Approach</span>
                   <h2 className="text-3xl md:text-4xl font-bold font-heading text-white mb-6 leading-tight">
                     From Dialogue to
                     <span className="text-slate-400"> Decisive Action</span>
@@ -407,7 +407,7 @@ const Home: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent"></div>
                     <div className="absolute bottom-5 left-5 right-5">
                       <div className="flex items-center space-x-3">
-                        <CheckCircle2 className="w-5 h-5 text-gold" />
+                        <CheckCircle2 className="w-5 h-5 text-white" />
                         <span className="text-white text-sm font-medium">Building collective intelligence</span>
                       </div>
                     </div>
@@ -454,13 +454,13 @@ const Home: React.FC = () => {
                   >
                     {/* Timeline Dot */}
                     <div className="absolute -left-[41px] top-6 flex items-center justify-center">
-                      <div className="w-8 h-8 rounded-full bg-slate-800 border-2 border-slate-700 group-hover:border-gold group-hover:bg-gold/10 transition-all duration-300 flex items-center justify-center">
-                        <span className="text-[10px] font-bold text-slate-400 group-hover:text-gold transition-colors">{step.num}</span>
+                      <div className="w-8 h-8 rounded-full bg-slate-800 border-2 border-slate-700 group-hover:border-white group-hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
+                        <span className="text-[10px] font-bold text-slate-400 group-hover:text-white transition-colors">{step.num}</span>
                       </div>
                     </div>
 
                     <div className="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50 hover:border-slate-600 rounded-xl p-6 transition-all duration-300">
-                      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-gold transition-colors">
+                      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-slate-300 transition-colors">
                         {step.title}
                       </h3>
                       <p className="text-slate-400 text-sm leading-relaxed">
@@ -473,7 +473,7 @@ const Home: React.FC = () => {
 
               <ScrollReveal delay={0.3} className="mt-10 ml-4 pl-8">
                 <Link to="/services">
-                  <Button className="!bg-gold !text-slate-900 hover:!bg-gold-400 font-semibold shadow-lg shadow-gold/10">
+                  <Button className="!bg-coral !text-white hover:!bg-coral-600 font-semibold shadow-lg">
                     Explore Our Services <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </Link>
@@ -656,22 +656,22 @@ const Home: React.FC = () => {
       {/* CTA Section */}
       <section className="py-24 lg:py-32 bg-navy text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-800 to-slate-900"></div>
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gold/5 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
         
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <ScrollReveal>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-8 leading-tight">
               Ready to move forward
               <br />
-              <span className="text-gold">with clarity?</span>
+              <span className="text-slate-300">with clarity?</span>
             </h2>
             <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto">
               Let's discuss how we can help your leadership team navigate complexity and make decisions that drive lasting impact.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
-                <Button size="lg" className="!bg-gold !text-slate-900 hover:!bg-gold-400 font-semibold shadow-lg shadow-gold/20 hover:shadow-xl transition-all">
+                <Button size="lg" className="!bg-coral !text-white hover:!bg-coral-600 font-semibold shadow-lg hover:shadow-xl transition-all">
                   Get in Touch
                 </Button>
               </Link>
@@ -782,7 +782,7 @@ const Home: React.FC = () => {
                       </span>
                       
                       {/* Title */}
-                      <h3 className="text-3xl md:text-4xl font-bold font-heading text-white mb-4 leading-[1.1] line-clamp-3 group-hover:text-gold transition-colors">
+                      <h3 className="text-3xl md:text-4xl font-bold font-heading text-white mb-4 leading-[1.1] line-clamp-3 group-hover:text-slate-300 transition-colors">
                         {article.title}
                       </h3>
                       

@@ -88,7 +88,7 @@ const Navbar: React.FC = () => {
               <NavLink to="/contact">
                 <Button 
                   size="sm" 
-                  className="!bg-navy hover:!bg-navy-800 !text-white font-medium shadow-sm hover:shadow-md"
+                  className="!bg-coral hover:!bg-coral-600 !text-white font-medium shadow-sm hover:shadow-md"
                 >
                   Get Started
                 </Button>
@@ -124,7 +124,7 @@ const Navbar: React.FC = () => {
           ))}
           <div className="pt-3 mt-2 border-t border-slate-100">
             <NavLink to="/contact" className="w-full">
-              <Button className="w-full justify-center !bg-navy hover:!bg-navy-800">Get Started</Button>
+              <Button className="w-full justify-center !bg-coral hover:!bg-coral-600">Get Started</Button>
             </NavLink>
           </div>
         </div>

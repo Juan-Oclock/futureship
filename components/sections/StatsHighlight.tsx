@@ -58,7 +58,7 @@ const StatsHighlight: React.FC<StatsHighlightProps> = ({
             </p>
 
             {/* Decorative underline */}
-            <div className={`absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-0.5 rounded-full ${isDark ? 'bg-gold/30' : 'bg-navy/20'} group-hover:w-20 transition-all duration-500`} />
+            <div className={`absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-0.5 rounded-full ${isDark ? 'bg-white/30' : 'bg-navy/20'} group-hover:w-20 transition-all duration-500`} />
           </motion.div>
         ))}
       </div>

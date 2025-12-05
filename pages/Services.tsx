@@ -125,12 +125,12 @@ const Services: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <span className="text-[11px] font-semibold text-gold uppercase tracking-[0.2em] mb-4 block">
+            <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-[0.2em] mb-4 block">
               Our Expertise
             </span>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-heading text-white mb-8 leading-[1.05]">
               Strategic Advisory
-              <span className="text-gold"> Solutions</span>
+              <span className="text-slate-300"> Solutions</span>
             </h1>
             <p className="text-xl text-slate-300 leading-relaxed max-w-2xl">
               As governance requirements expand and operational complexity grows, leaders often struggle to maintain strategic focus. We offer engaging and effective approaches to bridge the gap.
@@ -145,7 +145,7 @@ const Services: React.FC = () => {
           items={marqueeItems}
           speed={25}
           className="text-xl md:text-2xl font-semibold text-white/80"
-          separator={<span className="mx-6 text-gold">•</span>}
+          separator={<span className="mx-6 text-slate-400">•</span>}
         />
       </section>
 

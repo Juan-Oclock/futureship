@@ -43,7 +43,7 @@ const FiftyFiftySection: React.FC<FiftyFiftySectionProps> = ({
             <div className="text-[120px] md:text-[180px] lg:text-[220px] font-bold text-white leading-none tracking-tighter">
               <AnimatedCounter value={leftNumber} duration={2} />
             </div>
-            <div className="text-[80px] md:text-[120px] lg:text-[150px] font-light text-gold mx-2 lg:mx-4">/</div>
+            <div className="text-[80px] md:text-[120px] lg:text-[150px] font-light text-slate-400 mx-2 lg:mx-4">/</div>
             <div className="text-[120px] md:text-[180px] lg:text-[220px] font-bold text-white leading-none tracking-tighter">
               <AnimatedCounter value={rightNumber} duration={2} />
             </div>
@@ -64,7 +64,7 @@ const FiftyFiftySection: React.FC<FiftyFiftySectionProps> = ({
               {description}
             </p>
             <Link to={ctaLink}>
-              <Button className="!bg-gold !text-slate-900 hover:!bg-gold-400 font-semibold">
+              <Button className="!bg-coral !text-white hover:!bg-coral-600 font-semibold">
                 {ctaText}
               </Button>
             </Link>
