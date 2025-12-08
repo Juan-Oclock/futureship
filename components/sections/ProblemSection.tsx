@@ -154,6 +154,12 @@ const ProblemSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(-1);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   
+  // Track when titles container is in view (for mobile arrow)
+  // Use stricter margins so arrow only shows when titles are actually visible
+  const titlesInView = useInView(titlesContainerRef, { 
+    margin: "-40% 0px -40% 0px" // Only show when titles are well within viewport
+  });
+  
   // Scroll progress for the entire section
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -242,38 +248,41 @@ const ProblemSection: React.FC = () => {
         <DoubleChevronArrow progress={currentArrowProgress} />
       </motion.div>
 
-      {/* Mobile/Tablet Sticky Arrow - same timing as desktop */}
+      {/* Mobile/Tablet Fixed Arrow */}
       <motion.div 
-        className="lg:hidden fixed left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 pointer-events-none"
-        style={{ opacity: arrowOpacity }}
+        className="lg:hidden fixed left-4 sm:left-8 z-50 pointer-events-none"
+        style={{ top: '50%', transform: 'translateY(-50%)' }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: titlesInView ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
       >
         <svg 
-          width="45" 
-          height="32" 
-          viewBox="0 0 45 32" 
+          width="50" 
+          height="36" 
+          viewBox="0 0 50 36" 
           fill="none"
         >
           {/* Horizontal line */}
           <path 
-            d="M0 16 H15" 
+            d="M0 18 H18" 
             stroke={colors.gold}
-            strokeWidth="2"
+            strokeWidth="2.5"
             strokeLinecap="round"
           />
           {/* First chevron */}
           <path 
-            d="M13 4 L27 16 L13 28" 
+            d="M16 5 L32 18 L16 31" 
             stroke={colors.gold}
-            strokeWidth="2"
+            strokeWidth="2.5"
             strokeLinecap="round"
             strokeLinejoin="round"
             fill="none"
           />
           {/* Second chevron */}
           <path 
-            d="M25 4 L39 16 L25 28" 
+            d="M28 5 L44 18 L28 31" 
             stroke={colors.gold}
-            strokeWidth="2"
+            strokeWidth="2.5"
             strokeLinecap="round"
             strokeLinejoin="round"
             fill="none"
@@ -287,7 +296,7 @@ const ProblemSection: React.FC = () => {
         className="relative z-10 w-full px-4 sm:px-6 lg:px-8"
       >
         <div className="flex justify-center lg:justify-center">
-          <div className="py-6 sm:py-10 md:py-16 lg:py-32 lg:pl-32 xl:pl-40 pl-12 sm:pl-14">
+          <div className="py-6 sm:py-10 md:py-16 lg:py-32 lg:pl-32 xl:pl-40 pl-16 sm:pl-20">
             {roles.map((title, index) => (
               <TitleItem 
                 key={title} 
