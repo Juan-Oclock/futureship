@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Calendar, Clock, User, Share2, Linkedin, Twitter } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, Clock, User, Share2, Linkedin, Twitter, CheckCircle2 } from 'lucide-react';
 import Button from '../components/ui/Button';
 
 // Blog data - in a real app this would come from a CMS or API
@@ -834,6 +834,15 @@ const blogPosts: Record<string, any> = {
 const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? blogPosts[slug] : null;
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubscribed(true);
+    setEmail('');
+    setTimeout(() => setIsSubscribed(false), 3000);
+  };
 
   if (!post) {
     return (
@@ -962,14 +971,74 @@ const BlogPost: React.FC = () => {
         </div>
       </section>
 
+      {/* Newsletter Section */}
+      <section className="py-24 bg-neutral-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <p className="text-sm font-medium text-primary uppercase tracking-widest mb-4">
+              Newsletter
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold font-heading text-white mb-6">
+              Stay ahead of the curve
+            </h2>
+            <p className="text-neutral-400 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+              Get exclusive insights on strategic governance, leadership trends, and organizational foresight delivered to your inbox.
+            </p>
+
+            {/* Subscribe Form */}
+            <form onSubmit={handleSubscribe} className="max-w-md mx-auto">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email address"
+                  className="flex-1 px-5 py-4 bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:border-primary transition-all"
+                  required
+                />
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-8 py-4 bg-primary hover:bg-primary-hover text-white font-semibold transition-all flex items-center justify-center gap-2"
+                >
+                  {isSubscribed ? (
+                    <>
+                      <CheckCircle2 className="w-5 h-5" />
+                      Subscribed!
+                    </>
+                  ) : (
+                    <>
+                      Subscribe
+                      <ArrowRight className="w-4 h-4" />
+                    </>
+                  )}
+                </motion.button>
+              </div>
+            </form>
+
+            {/* Trust indicators */}
+            <p className="text-neutral-500 text-sm mt-6">
+              Join 2,000+ leaders. Unsubscribe anytime.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Related Articles Section */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-stone-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-heading text-neutral-900 mb-4">
               Related Articles
             </h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">
+            <p className="text-neutral-500 max-w-2xl mx-auto">
               Continue exploring insights on strategic foresight, governance, and leadership.
             </p>
           </div>

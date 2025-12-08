@@ -419,43 +419,36 @@ const Blog: React.FC = () => {
       </section>
 
       {/* Newsletter Section - Modern Design */}
-      <section className="py-24 px-6 relative overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50" />
-          <div className="absolute top-1/4 -left-20 w-80 h-80 bg-navy/30 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl" />
-        </div>
-
-        <div className="max-w-4xl mx-auto relative z-10">
+      <section className="py-24 bg-neutral-900 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
             <div className="text-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+              <p className="text-sm font-medium text-primary uppercase tracking-widest mb-4">
+                Newsletter
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold font-heading text-white mb-6">
                 Stay ahead of the curve
               </h2>
-              <p className="text-slate-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-neutral-400 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
                 Get exclusive insights on strategic governance, leadership trends, and organizational foresight delivered to your inbox.
               </p>
 
               {/* Subscribe Form */}
-              <form onSubmit={handleSubscribe} className="max-w-lg mx-auto">
+              <form onSubmit={handleSubscribe} className="max-w-md mx-auto">
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <div className="flex-1 relative">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email address"
-                      className="w-full px-6 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 transition-all"
-                      required
-                    />
-                  </div>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email address"
+                    className="flex-1 px-5 py-4 bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:border-primary transition-all"
+                    required
+                  />
                   <motion.button
                     type="submit"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 font-semibold rounded-xl hover:from-amber-300 hover:to-amber-400 transition-all shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2"
+                    className="px-8 py-4 bg-primary hover:bg-primary-hover text-white font-semibold transition-all flex items-center justify-center gap-2"
                   >
                     {isSubscribed ? (
                       <>
@@ -473,7 +466,7 @@ const Blog: React.FC = () => {
               </form>
 
               {/* Trust indicators */}
-              <p className="text-slate-500 text-sm mt-6">
+              <p className="text-neutral-500 text-sm mt-6">
                 Join 2,000+ leaders. Unsubscribe anytime.
               </p>
             </div>
