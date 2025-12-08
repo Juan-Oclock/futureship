@@ -1,183 +1,21 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Lightbulb, Target, Users, CheckCircle2, Compass, Shield } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Button from '../components/ui/Button';
-import TextMarquee from '../components/animations/TextMarquee';
 import ScrollReveal from '../components/animations/ScrollReveal';
-import ValuePropsGrid from '../components/sections/ValuePropsGrid';
 import StatsHighlight from '../components/sections/StatsHighlight';
-import FiftyFiftySection from '../components/sections/FiftyFiftySection';
-import ScrollingTitles from '../components/sections/ScrollingTitles';
-import StickyValueProps from '../components/sections/StickyValueProps';
-
-// Strategic Capabilities Section with scroll-linked fade and position
-const StrategicCapabilities: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-  
-  const leftX = useTransform(scrollYProgress, [0, 0.2], ["25%", "0%"]);
-  const leftOpacity = useTransform(scrollYProgress, [0, 0.1, 0.7, 0.78], [0, 1, 1, 0]);
-  const chevronColor = useTransform(
-    scrollYProgress, 
-    [0.1, 0.25, 0.4, 0.55, 0.7],
-    ["#1E3A5F", "#C9A227", "#1E3A5F", "#C9A227", "#1E3A5F"]
-  );
-
-  const services = [
-    {
-      title: "Collective Decision-Making",
-      desc: "Proven tools and techniques for groups to build consensus and make transparent decisions. We facilitate structured dialogue that transforms diverse perspectives into aligned action.",
-    },
-    {
-      title: "Advisory Partnership",
-      desc: "Extended engagements where deeper trust, insight, and strategic intimacy develop over time. We become an extension of your leadership team, providing ongoing counsel and support.",
-    },
-    {
-      title: "Scenario Planning",
-      desc: "Develop robust future scenarios to stress-test strategy and build organisational resilience. Our methodology helps you prepare for multiple futures while remaining agile.",
-    },
-    {
-      title: "Strategic Foresight",
-      desc: "Facilitated workshops and training to anticipate change and shape long-term strategy. We help leadership teams see around corners and identify emerging opportunities before competitors.",
-    },
-  ];
-
-  return (
-    <section ref={sectionRef} className="bg-white pt-32 lg:pt-40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row">
-          <div className="lg:w-[60%]">
-            <motion.div 
-              className="lg:sticky lg:top-1/2 lg:-translate-y-1/2"
-              style={{ opacity: leftOpacity, x: leftX }}
-            >
-              <div className="flex items-baseline gap-4">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-slate-900 leading-[1.1] whitespace-nowrap">
-                  Strategic Capabilities
-                </h2>
-                <motion.svg 
-                  className="w-7 h-7 hidden md:block flex-shrink-0 mt-2" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  style={{ stroke: chevronColor }}
-                  strokeWidth="2.5" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
-                >
-                  <path d="M6 4l8 8-8 8" />
-                  <path d="M12 4l8 8-8 8" />
-                </motion.svg>
-              </div>
-            </motion.div>
-          </div>
-
-          <div className="lg:w-[40%] lg:pl-12 pb-32">
-            {services.map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.4, margin: "-30% 0px -40% 0px" }}
-                transition={{ 
-                  opacity: { duration: 0.8, ease: "easeInOut" },
-                  y: { duration: 0.6, ease: "easeOut" }
-                }}
-                className="min-h-[30vh] lg:min-h-[45vh] flex flex-col justify-center py-8 lg:py-16"
-              >
-                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
-                  {item.title}
-                </h3>
-                <p className="text-base text-slate-500 leading-relaxed max-w-lg">
-                  {item.desc}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
+import ProblemSection from '../components/sections/ProblemSection';
+import ValuePropsVertical from '../components/sections/ValuePropsVertical';
+import TransformationSection from '../components/sections/TransformationSection';
 
 const Home: React.FC = () => {
-  // Value propositions data (EmuSearch style)
-  const valueProps = [
-    {
-      icon: Lightbulb,
-      title: "Uncommon Thinking",
-      description: "We do things differently to unlock untapped potential in strategic advisory, opening new possibilities for your organisation.",
-      details: [
-        "Challenge conventional assumptions",
-        "Explore alternative perspectives",
-        "Discover hidden opportunities"
-      ]
-    },
-    {
-      icon: Target,
-      title: "Forward Focus",
-      description: "An agile response for today's context ensures diverse perspectives to help move your organisation and leadership forward.",
-      details: [
-        "Adaptive strategic frameworks",
-        "Future-ready decision making",
-        "Continuous alignment with goals"
-      ]
-    },
-    {
-      icon: Users,
-      title: "Network Mastery",
-      description: "Our partners bring relationships that go beyond business from 20+ years alongside remarkable leaders with a shared outlook on success.",
-      details: [
-        "Access to industry leaders",
-        "Cross-sector collaboration",
-        "Trusted advisory relationships"
-      ]
-    },
-    {
-      icon: Compass,
-      title: "Strategic Clarity",
-      description: "Cut through complexity to find the clearest path forward. We help leadership teams align on what matters most and make confident decisions.",
-      details: [
-        "Simplify complex challenges",
-        "Build leadership alignment",
-        "Create actionable roadmaps"
-      ]
-    },
-    {
-      icon: Shield,
-      title: "Trusted Partnership",
-      description: "More than consultants—we're partners invested in your success. Our approach builds lasting capability within your organisation.",
-      details: [
-        "Long-term relationship focus",
-        "Knowledge transfer emphasis",
-        "Confidential and discreet"
-      ]
-    }
-  ];
-
   // Stats data
   const stats = [
     { value: 4.9, suffix: "/5", label: "Client Satisfaction", decimals: 1 },
     { value: 100, suffix: "%", label: "Project Success Rate", decimals: 0 },
     { value: 15, suffix: "+", label: "Years Experience", decimals: 0 },
     { value: 50, suffix: "+", label: "Organisations Served", decimals: 0 },
-  ];
-
-  // Marquee items
-  const marqueeItems = [
-    "Strategic Foresight",
-    "Scenario Planning",
-    "Board Advisory",
-    "Governance",
-    "Decision Making",
-    "Leadership",
-    "Consensus Building",
-    "Risk Management",
-    "Future Planning",
-    "Executive Coaching",
   ];
 
   // Timeline animation variants
@@ -284,59 +122,41 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Trust Bar - Two Row Scrolling Logos */}
-      <section className="py-12 bg-white border-b border-slate-100 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+      {/* Trust Bar - Single Row, Slower Speed */}
+      <section className="py-10 bg-white border-b border-slate-100 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
           <p className="text-center text-[11px] font-semibold text-slate-400 uppercase tracking-[0.2em]">
             Trusted by forward-thinking organisations
           </p>
         </div>
         
-        {/* Scrolling container */}
+        {/* Scrolling container - single row */}
         <div className="relative">
           {/* Fade edges */}
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
           
-          {/* Row 1 - scrolling left */}
-          <div className="flex mb-4">
-            <motion.div 
-              className="flex items-center gap-16 pr-16"
-              animate={{ x: [0, -1920] }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            >
-              {[...Array(2)].map((_, setIndex) => (
-                <div key={setIndex} className="flex items-center gap-16">
-                  <span className="text-xl font-semibold text-slate-300 whitespace-nowrap">Meridian Partners</span>
-                  <span className="text-xl font-semibold text-slate-300 whitespace-nowrap">Apex Council</span>
-                  <span className="text-xl font-bold text-slate-300 tracking-wide whitespace-nowrap">NORTHGATE</span>
-                  <span className="text-xl font-semibold text-slate-300 whitespace-nowrap">Vanguard Group</span>
-                  <span className="text-xl font-semibold text-slate-300 whitespace-nowrap">Sterling & Co</span>
-                  <span className="text-xl font-semibold text-slate-300 whitespace-nowrap">Horizon Capital</span>
-                  <span className="text-xl font-bold text-slate-300 tracking-wider whitespace-nowrap">BLACKWOOD</span>
-                  <span className="text-xl font-semibold text-slate-300 whitespace-nowrap">Atlas Ventures</span>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-          
-          {/* Row 2 - scrolling right */}
+          {/* Single row - slower scrolling (50s) */}
           <div className="flex">
             <motion.div 
-              className="flex items-center gap-16 pr-16"
-              animate={{ x: [-1920, 0] }}
-              transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+              className="flex items-center gap-12 md:gap-16 pr-12 md:pr-16"
+              animate={{ x: [0, -1920] }}
+              transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
             >
               {[...Array(2)].map((_, setIndex) => (
-                <div key={setIndex} className="flex items-center gap-16">
-                  <span className="text-xl font-semibold text-slate-300 whitespace-nowrap">Pinnacle Advisory</span>
-                  <span className="text-xl font-bold text-slate-300 tracking-wide whitespace-nowrap">SUMMIT</span>
-                  <span className="text-xl font-semibold text-slate-300 whitespace-nowrap">Evergreen Trust</span>
-                  <span className="text-xl font-semibold text-slate-300 whitespace-nowrap">Keystone Group</span>
-                  <span className="text-xl font-bold text-slate-300 whitespace-nowrap">NEXUS</span>
-                  <span className="text-xl font-semibold text-slate-300 whitespace-nowrap">Catalyst Partners</span>
-                  <span className="text-xl font-semibold text-slate-300 whitespace-nowrap">Bridgewater Co</span>
-                  <span className="text-xl font-bold text-slate-300 tracking-wider whitespace-nowrap">FORTIS</span>
+                <div key={setIndex} className="flex items-center gap-12 md:gap-16">
+                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Meridian Partners</span>
+                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Apex Council</span>
+                  <span className="text-lg md:text-xl font-bold text-slate-300 tracking-wide whitespace-nowrap">NORTHGATE</span>
+                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Vanguard Group</span>
+                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Sterling & Co</span>
+                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Horizon Capital</span>
+                  <span className="text-lg md:text-xl font-bold text-slate-300 tracking-wider whitespace-nowrap">BLACKWOOD</span>
+                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Atlas Ventures</span>
+                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Pinnacle Advisory</span>
+                  <span className="text-lg md:text-xl font-bold text-slate-300 tracking-wide whitespace-nowrap">SUMMIT</span>
+                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Evergreen Trust</span>
+                  <span className="text-lg md:text-xl font-bold text-slate-300 whitespace-nowrap">NEXUS</span>
                 </div>
               ))}
             </motion.div>
@@ -344,35 +164,11 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Scrolling Titles Section - EmuSearch Role Titles Style */}
-      <ScrollingTitles 
-        titles={[
-          "Board",
-          "CEO",
-          "CFO",
-          "COO",
-          "CHRO",
-          "Director",
-          "Head of Council",
-        ]}
-      />
+      {/* Problem Section - Integrates role titles with problem acknowledgment */}
+      <ProblemSection />
 
-      {/* Value Props Section - Sticky Scroll Animation */}
-      <StickyValueProps
-        subtitle="The Way Forward Difference"
-        title="We do things a little differently"
-        items={valueProps}
-      />
-
-      {/* Stats Section - EmuSearch "4.9/5" Style */}
-      <section className="py-20 bg-slate-50 border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <StatsHighlight stats={stats} variant="light" />
-        </div>
-      </section>
-
-      {/* Strategic Capabilities - Scroll Reveal - HIDDEN FOR NOW */}
-      {/* <StrategicCapabilities /> */}
+      {/* Value Props Section - Staggered vertical cards */}
+      <ValuePropsVertical />
 
       {/* Methodology Section */}
       <section className="py-24 lg:py-32 bg-slate-900 relative overflow-hidden">
@@ -484,15 +280,20 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 50/50 Section - EmuSearch "Diversity" Style */}
-      <FiftyFiftySection
-        leftNumber={50}
-        rightNumber={50}
-        title="Diversity in equal measure"
-        description="Balanced representation is just part of our approach to diverse thinking. We believe the best decisions come from teams that embrace different perspectives and experiences."
-        ctaText="Meet Our Team"
-        ctaLink="/about"
-      />
+      {/* Stats Section - Proven Results */}
+      <section className="py-20 lg:py-24 bg-slate-50 border-y border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal className="text-center mb-12">
+            <span className="text-[11px] font-semibold text-navy uppercase tracking-[0.2em] mb-4 block">
+              Proven Results
+            </span>
+            <h2 className="text-2xl md:text-3xl font-bold font-heading text-slate-900">
+              Numbers that speak for themselves
+            </h2>
+          </ScrollReveal>
+          <StatsHighlight stats={stats} variant="light" />
+        </div>
+      </section>
 
       {/* Case Studies Section */}
       <section className="py-24 lg:py-32 bg-white">
@@ -653,37 +454,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 lg:py-32 bg-navy text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-800 to-slate-900"></div>
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
-        
-        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-8 leading-tight">
-              Ready to move forward
-              <br />
-              <span className="text-slate-300">with clarity?</span>
-            </h2>
-            <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto">
-              Let's discuss how we can help your leadership team navigate complexity and make decisions that drive lasting impact.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact">
-                <Button size="lg" className="!bg-coral !text-white hover:!bg-coral-600 font-semibold shadow-lg hover:shadow-xl transition-all">
-                  Get in Touch
-                </Button>
-              </Link>
-              <Link to="/case-studies">
-                <Button size="lg" variant="outline" className="!border-white/20 !text-white hover:!bg-white/10">
-                  View Our Results
-                </Button>
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      {/* Transformation Section - Before/After comparison */}
+      <TransformationSection />
 
       {/* Articles/Insights Section */}
       <section className="py-24 lg:py-32 bg-slate-50">
@@ -823,6 +595,38 @@ const Home: React.FC = () => {
               <Button variant="outline" className="w-full !border-slate-300">View All Articles</Button>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* CTA Section - Final call to action */}
+      <section className="py-24 lg:py-32 bg-navy text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-800 to-slate-900"></div>
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
+        
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+          <ScrollReveal>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-8 leading-tight">
+              Ready to move forward
+              <br />
+              <span className="text-slate-300">with clarity?</span>
+            </h2>
+            <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto">
+              Let's discuss how we can help your leadership team navigate complexity and make decisions that drive lasting impact.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact">
+                <Button size="lg" className="!bg-coral !text-white hover:!bg-coral-600 font-semibold shadow-lg hover:shadow-xl transition-all">
+                  Get in Touch
+                </Button>
+              </Link>
+              <Link to="/case-studies">
+                <Button size="lg" variant="outline" className="!border-white/20 !text-white hover:!bg-white/10">
+                  View Our Results
+                </Button>
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

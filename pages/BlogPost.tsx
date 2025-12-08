@@ -12,9 +12,9 @@ const blogPosts: Record<string, any> = {
     date: "December 2, 2024",
     readTime: "5 min read",
     author: {
-      name: "Simon Chen",
+      name: "Simon Waller",
       role: "Principal Advisor",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200"
+      image: "/image/simon waller.jpg"
     },
     heroImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1600",
     excerpt: "How boards and leadership teams can navigate complexity while maintaining strategic clarity and collective decision-making.",
@@ -63,9 +63,9 @@ const blogPosts: Record<string, any> = {
     date: "November 28, 2024",
     readTime: "7 min read",
     author: {
-      name: "Simon Chen",
+      name: "Simon Waller",
       role: "Principal Advisor",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200"
+      image: "/image/simon waller.jpg"
     },
     heroImage: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1600",
     excerpt: "Practical frameworks for facilitating open dialogue and finding common ground when perspectives differ.",
@@ -110,9 +110,9 @@ const blogPosts: Record<string, any> = {
     date: "November 20, 2024",
     readTime: "6 min read",
     author: {
-      name: "Simon Chen",
+      name: "Simon Waller",
       role: "Principal Advisor",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200"
+      image: "/image/simon waller.jpg"
     },
     heroImage: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1600",
     excerpt: "Why councils need to embrace strategic foresight to prepare for demographic shifts and climate challenges.",
