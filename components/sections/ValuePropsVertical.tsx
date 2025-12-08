@@ -111,14 +111,14 @@ const ValuePropsVertical: React.FC = () => {
         </motion.div>
 
         {/* Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 min-h-[600px] border border-slate-700/50 rounded-3xl overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-4 min-h-[auto] lg:min-h-[600px] border border-slate-700/50 rounded-2xl lg:rounded-3xl overflow-hidden">
           
           {/* Left Column - Navigation Titles */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2, ease: appleEase }}
-            className="lg:col-span-4 flex flex-col justify-between p-6 lg:p-8"
+            className="lg:col-span-4 flex flex-col justify-between p-4 sm:p-6 lg:p-8"
           >
             {/* Title List */}
             <div className="space-y-1">
@@ -130,18 +130,18 @@ const ValuePropsVertical: React.FC = () => {
                   <button
                     key={prop.title}
                     onClick={() => setActiveIndex(index)}
-                    className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 flex items-center gap-3 group ${
+                    className={`w-full text-left px-3 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-300 flex items-center gap-2 sm:gap-3 group ${
                       isActive 
                         ? 'bg-white/10' 
                         : 'hover:bg-white/5'
                     }`}
                   >
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                    <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-all duration-300 flex-shrink-0 ${
                       isActive ? 'bg-coral' : 'bg-white/10 group-hover:bg-white/20'
                     }`}>
-                      <Icon className={`w-5 h-5 transition-colors ${isActive ? 'text-white' : 'text-slate-400'}`} />
+                      <Icon className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${isActive ? 'text-white' : 'text-slate-400'}`} />
                     </div>
-                    <span className={`font-semibold transition-colors duration-300 ${
+                    <span className={`font-semibold text-sm sm:text-base transition-colors duration-300 ${
                       isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-300'
                     }`}>
                       {prop.title}
@@ -181,7 +181,7 @@ const ValuePropsVertical: React.FC = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4, ease: appleEase }}
-            className="lg:col-span-8 relative rounded-3xl overflow-hidden min-h-[500px] lg:min-h-full"
+            className="lg:col-span-8 relative rounded-xl lg:rounded-3xl overflow-hidden min-h-[350px] sm:min-h-[400px] lg:min-h-full"
           >
             {/* Background Image with Animation */}
             <AnimatePresence mode="wait">
@@ -205,7 +205,7 @@ const ValuePropsVertical: React.FC = () => {
             </AnimatePresence>
 
             {/* Content Overlay */}
-            <div className="relative z-10 h-full flex flex-col justify-center p-8 lg:p-12">
+            <div className="relative z-10 h-full flex flex-col justify-center p-5 sm:p-8 lg:p-12">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
@@ -216,33 +216,33 @@ const ValuePropsVertical: React.FC = () => {
                   className="max-w-lg"
                 >
                   {/* Title */}
-                  <h3 className="text-2xl lg:text-3xl xl:text-4xl font-bold font-heading text-white mb-4">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold font-heading text-white mb-3 sm:mb-4">
                     {activeProp.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-slate-300 text-lg leading-relaxed mb-6">
+                  <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
                     {activeProp.description}
                   </p>
 
                   {/* Details list */}
-                  <ul className="space-y-3">
+                  <ul className="space-y-2 sm:space-y-3">
                     {activeProp.details.map((detail, i) => (
                       <motion.li 
                         key={i}
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.1 + i * 0.1, duration: 0.3 }}
-                        className="flex items-center gap-3 text-white"
+                        className="flex items-center gap-2 sm:gap-3 text-white text-sm sm:text-base"
                       >
-                        <div className="w-2 h-2 rounded-full bg-coral flex-shrink-0" />
+                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-coral flex-shrink-0" />
                         <span>{detail}</span>
                       </motion.li>
                     ))}
                   </ul>
 
                   {/* Progress indicator */}
-                  <div className="mt-8 flex items-center gap-2">
+                  <div className="mt-6 sm:mt-8 flex items-center gap-1.5 sm:gap-2">
                     {valueProps.map((_, i) => (
                       <button
                         key={i}
