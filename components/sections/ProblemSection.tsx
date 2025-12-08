@@ -120,7 +120,7 @@ const TitleItem: React.FC<{
   return (
     <motion.div
       ref={ref}
-      className="py-1 md:py-2 lg:py-3 overflow-hidden"
+      className="py-2 sm:py-3 md:py-4 lg:py-3 overflow-hidden"
       initial={{ opacity: 0, x: 60 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-10% 0px" }}
@@ -225,7 +225,7 @@ const ProblemSection: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3, ease: appleEase }}
-          className="text-center text-sm font-semibold text-slate-400 uppercase tracking-[0.25em] mt-12 lg:mt-16"
+          className="text-center text-sm font-semibold text-slate-400 uppercase tracking-[0.25em] mt-8 sm:mt-10 lg:mt-16"
         >
           We partner with
         </motion.p>
@@ -242,37 +242,38 @@ const ProblemSection: React.FC = () => {
         <DoubleChevronArrow progress={currentArrowProgress} />
       </motion.div>
 
-      {/* Mobile Arrow - inline, not sticky */}
+      {/* Mobile/Tablet Sticky Arrow - same timing as desktop */}
       <motion.div 
-        className="lg:hidden flex justify-center py-8"
-        initial={{ opacity: 0, x: -30 }}
-        animate={isInView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.2, ease: appleEase }}
+        className="lg:hidden fixed left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 pointer-events-none"
+        style={{ opacity: arrowOpacity }}
       >
         <svg 
-          width="200" 
-          height="50" 
-          viewBox="0 0 200 50" 
+          width="45" 
+          height="32" 
+          viewBox="0 0 45 32" 
           fill="none"
         >
+          {/* Horizontal line */}
           <path 
-            d="M0 25 H130" 
+            d="M0 16 H15" 
             stroke={colors.gold}
-            strokeWidth="2.5"
+            strokeWidth="2"
             strokeLinecap="round"
           />
+          {/* First chevron */}
           <path 
-            d="M130 8 L155 25 L130 42" 
+            d="M13 4 L27 16 L13 28" 
             stroke={colors.gold}
-            strokeWidth="2.5"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
             fill="none"
           />
+          {/* Second chevron */}
           <path 
-            d="M150 8 L175 25 L150 42" 
+            d="M25 4 L39 16 L25 28" 
             stroke={colors.gold}
-            strokeWidth="2.5"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
             fill="none"
@@ -286,7 +287,7 @@ const ProblemSection: React.FC = () => {
         className="relative z-10 w-full px-4 sm:px-6 lg:px-8"
       >
         <div className="flex justify-center lg:justify-center">
-          <div className="py-16 md:py-24 lg:py-32 lg:pl-32 xl:pl-40">
+          <div className="py-6 sm:py-10 md:py-16 lg:py-32 lg:pl-32 xl:pl-40 pl-12 sm:pl-14">
             {roles.map((title, index) => (
               <TitleItem 
                 key={title} 
