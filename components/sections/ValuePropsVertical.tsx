@@ -92,87 +92,95 @@ const ValuePropsVertical: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-24 lg:py-32 bg-slate-900 relative overflow-hidden"
+      className="py-24 lg:py-32 bg-stone-50 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: appleEase }}
-          className="text-center mb-12 lg:mb-16"
+          className="text-center mb-16"
         >
-          <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-[0.2em] mb-4 block">
+          <span className="text-sm font-medium text-primary uppercase tracking-widest mb-4 block">
             The Way Forward Difference
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-white">
+          <h2 className="text-3xl md:text-4xl font-bold font-heading text-neutral-900">
             We do things a little differently
           </h2>
         </motion.div>
 
         {/* Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-4 min-h-[auto] lg:min-h-[600px] border border-slate-700/50 rounded-2xl lg:rounded-3xl overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           
           {/* Left Column - Navigation Titles */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2, ease: appleEase }}
-            className="lg:col-span-4 flex flex-col justify-between p-4 sm:p-6 lg:p-8"
+            className="flex flex-col"
           >
             {/* Title List */}
-            <div className="space-y-1">
+            <div className="space-y-2">
               {valueProps.map((prop, index) => {
                 const Icon = prop.icon;
                 const isActive = index === activeIndex;
                 
                 return (
-                  <button
+                  <div
                     key={prop.title}
-                    onClick={() => setActiveIndex(index)}
-                    className={`w-full text-left px-3 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-300 flex items-center gap-2 sm:gap-3 group ${
+                    onMouseEnter={() => setActiveIndex(index)}
+                    className={`w-full text-left p-4 transition-all duration-300 flex items-center gap-4 group border-l-4 cursor-pointer ${
                       isActive 
-                        ? 'bg-white/10' 
-                        : 'hover:bg-white/5'
+                        ? 'bg-white border-primary shadow-md' 
+                        : 'bg-transparent border-transparent hover:bg-white/50 hover:border-stone-300'
                     }`}
                   >
-                    <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-all duration-300 flex-shrink-0 ${
-                      isActive ? 'bg-coral' : 'bg-white/10 group-hover:bg-white/20'
+                    <div className={`w-12 h-12 flex items-center justify-center transition-all duration-300 flex-shrink-0 ${
+                      isActive ? 'bg-primary' : 'bg-stone-200 group-hover:bg-stone-300'
                     }`}>
-                      <Icon className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${isActive ? 'text-white' : 'text-slate-400'}`} />
+                      <Icon className={`w-5 h-5 transition-colors ${isActive ? 'text-white' : 'text-neutral-600'}`} />
                     </div>
-                    <span className={`font-semibold text-sm sm:text-base transition-colors duration-300 ${
-                      isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-300'
-                    }`}>
-                      {prop.title}
-                    </span>
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeIndicator"
-                        className="ml-auto w-1.5 h-1.5 rounded-full bg-coral"
-                      />
-                    )}
-                  </button>
+                    <div className="flex-1">
+                      <span className={`font-semibold text-base transition-colors duration-300 block ${
+                        isActive ? 'text-neutral-900' : 'text-neutral-600 group-hover:text-neutral-800'
+                      }`}>
+                        {prop.title}
+                      </span>
+                      {isActive && (
+                        <motion.span
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          className="text-sm text-neutral-500 mt-1 block"
+                        >
+                          {prop.details[0]}
+                        </motion.span>
+                      )}
+                    </div>
+                  </div>
                 );
               })}
             </div>
 
-            {/* Up/Down navigation - bottom right */}
-            <div className="hidden lg:flex items-center justify-end gap-1 mt-6">
+            {/* Navigation arrows */}
+            <div className="hidden lg:flex items-center gap-2 mt-8">
               <button 
                 onClick={() => setActiveIndex(Math.max(0, activeIndex - 1))}
                 disabled={activeIndex === 0}
-                className={`p-2 rounded-lg border border-slate-600/50 transition-all ${activeIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-white/10 hover:border-slate-500'}`}
+                className={`w-10 h-10 flex items-center justify-center border border-stone-300 transition-all ${activeIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-white hover:border-primary hover:text-primary'}`}
               >
-                <ChevronUp className="w-4 h-4 text-slate-400" />
+                <ChevronUp className="w-5 h-5 text-neutral-600" />
               </button>
               <button 
                 onClick={() => setActiveIndex(Math.min(valueProps.length - 1, activeIndex + 1))}
                 disabled={activeIndex === valueProps.length - 1}
-                className={`p-2 rounded-lg border border-slate-600/50 transition-all ${activeIndex === valueProps.length - 1 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-white/10 hover:border-slate-500'}`}
+                className={`w-10 h-10 flex items-center justify-center border border-stone-300 transition-all ${activeIndex === valueProps.length - 1 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-white hover:border-primary hover:text-primary'}`}
               >
-                <ChevronDown className="w-4 h-4 text-slate-400" />
+                <ChevronDown className="w-5 h-5 text-neutral-600" />
               </button>
+              <span className="text-sm text-neutral-500 ml-4">
+                {activeIndex + 1} / {valueProps.length}
+              </span>
             </div>
           </motion.div>
 
@@ -181,15 +189,15 @@ const ValuePropsVertical: React.FC = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4, ease: appleEase }}
-            className="lg:col-span-8 relative rounded-xl lg:rounded-3xl overflow-hidden min-h-[350px] sm:min-h-[400px] lg:min-h-full"
+            className="relative overflow-hidden min-h-[450px] lg:min-h-[550px]"
           >
             {/* Background Image with Animation */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                initial={{ opacity: 0, scale: 1.1 }}
+                initial={{ opacity: 0, scale: 1.05 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
+                exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.5, ease: appleEase }}
                 className="absolute inset-0"
               >
@@ -198,14 +206,13 @@ const ValuePropsVertical: React.FC = () => {
                   alt={activeProp.title}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
-                {/* Dark gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-slate-900/30" />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/60 to-transparent" />
               </motion.div>
             </AnimatePresence>
 
             {/* Content Overlay */}
-            <div className="relative z-10 h-full flex flex-col justify-center p-5 sm:p-8 lg:p-12">
+            <div className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-10">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
@@ -213,44 +220,43 @@ const ValuePropsVertical: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.4, ease: appleEase }}
-                  className="max-w-lg"
                 >
                   {/* Title */}
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold font-heading text-white mb-3 sm:mb-4">
+                  <h3 className="text-2xl lg:text-3xl font-bold font-heading text-white mb-4">
                     {activeProp.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
+                  <p className="text-white/80 text-lg leading-relaxed mb-6 max-w-md">
                     {activeProp.description}
                   </p>
 
                   {/* Details list */}
-                  <ul className="space-y-2 sm:space-y-3">
+                  <ul className="space-y-3 mb-8">
                     {activeProp.details.map((detail, i) => (
                       <motion.li 
                         key={i}
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.1 + i * 0.1, duration: 0.3 }}
-                        className="flex items-center gap-2 sm:gap-3 text-white text-sm sm:text-base"
+                        className="flex items-center gap-3 text-white"
                       >
-                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-coral flex-shrink-0" />
+                        <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
                         <span>{detail}</span>
                       </motion.li>
                     ))}
                   </ul>
 
                   {/* Progress indicator */}
-                  <div className="mt-6 sm:mt-8 flex items-center gap-1.5 sm:gap-2">
+                  <div className="flex items-center gap-2">
                     {valueProps.map((_, i) => (
                       <button
                         key={i}
                         onClick={() => setActiveIndex(i)}
-                        className={`h-1 rounded-full transition-all duration-300 ${
+                        className={`h-1.5 rounded-full transition-all duration-300 ${
                           i === activeIndex 
-                            ? 'w-8 bg-coral' 
-                            : 'w-2 bg-white/30 hover:bg-white/50'
+                            ? 'w-10 bg-primary' 
+                            : 'w-3 bg-white/40 hover:bg-white/60'
                         }`}
                       />
                     ))}

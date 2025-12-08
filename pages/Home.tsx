@@ -44,9 +44,9 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="bg-slate-50">
-      {/* Hero Section - EmuSearch Inspired */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-slate-50">
+    <div className="bg-white">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-stone-50">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -71,15 +71,15 @@ const Home: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
               className="text-5xl md:text-6xl lg:text-7xl font-heading tracking-tight leading-[1.05] mb-8"
             >
-              <span className="font-medium text-slate-900">Strategic Advisory to help </span>
-              <span className="font-extrabold text-navy">move your organisation forward.</span>
+              <span className="font-medium text-neutral-900">Strategic Advisory to help </span>
+              <span className="font-extrabold text-neutral-900">move your organisation forward.</span>
             </motion.h1>
             
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-slate-600 leading-relaxed mb-12 max-w-2xl"
+              className="text-xl md:text-2xl text-neutral-600 leading-relaxed mb-12 max-w-2xl"
             >
               We partner with boards, councils, and leadership teams to navigate complexity, strengthen governance, and build collective decision-making capabilities.
             </motion.p>
@@ -91,12 +91,12 @@ const Home: React.FC = () => {
               className="flex flex-col sm:flex-row gap-4"
             >
               <Link to="/contact">
-                <Button size="lg" className="w-full sm:w-auto !bg-navy !text-white hover:!bg-navy-800 border-none font-semibold shadow-lg hover:shadow-xl transition-all">
+                <Button size="lg" className="w-full sm:w-auto font-semibold shadow-lg hover:shadow-xl transition-all">
                   Start a Conversation <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link to="/services">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto !border-slate-300 !text-slate-700 hover:!bg-slate-100 hover:!border-slate-400 transition-colors font-medium">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto !border-stone-300 !text-neutral-700 hover:!bg-stone-100 hover:!border-stone-400 transition-colors font-medium">
                   Our Services
                 </Button>
               </Link>
@@ -112,20 +112,20 @@ const Home: React.FC = () => {
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10"
         >
           <div className="flex flex-col items-center space-y-2">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-medium">Scroll</span>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-neutral-400 font-medium">Scroll</span>
             <motion.div 
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="w-px h-8 bg-gradient-to-b from-slate-400 to-transparent"
+              className="w-px h-8 bg-gradient-to-b from-neutral-400 to-transparent"
             />
           </div>
         </motion.div>
       </section>
 
       {/* Trust Bar - Single Row, Slower Speed */}
-      <section className="py-10 bg-white border-b border-slate-100 overflow-hidden">
+      <section className="py-10 bg-white border-b border-stone-200 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-          <p className="text-center text-[11px] font-semibold text-slate-400 uppercase tracking-[0.2em]">
+          <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em]">
             Trusted by forward-thinking organisations
           </p>
         </div>
@@ -145,18 +145,18 @@ const Home: React.FC = () => {
             >
               {[...Array(2)].map((_, setIndex) => (
                 <div key={setIndex} className="flex items-center gap-12 md:gap-16">
-                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Meridian Partners</span>
-                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Apex Council</span>
-                  <span className="text-lg md:text-xl font-bold text-slate-300 tracking-wide whitespace-nowrap">NORTHGATE</span>
-                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Vanguard Group</span>
-                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Sterling & Co</span>
-                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Horizon Capital</span>
-                  <span className="text-lg md:text-xl font-bold text-slate-300 tracking-wider whitespace-nowrap">BLACKWOOD</span>
-                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Atlas Ventures</span>
-                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Pinnacle Advisory</span>
-                  <span className="text-lg md:text-xl font-bold text-slate-300 tracking-wide whitespace-nowrap">SUMMIT</span>
-                  <span className="text-lg md:text-xl font-semibold text-slate-300 whitespace-nowrap">Evergreen Trust</span>
-                  <span className="text-lg md:text-xl font-bold text-slate-300 whitespace-nowrap">NEXUS</span>
+                  <span className="text-lg md:text-xl font-semibold text-stone-300 whitespace-nowrap">Meridian Partners</span>
+                  <span className="text-lg md:text-xl font-semibold text-stone-300 whitespace-nowrap">Apex Council</span>
+                  <span className="text-lg md:text-xl font-bold text-stone-300 tracking-wide whitespace-nowrap">NORTHGATE</span>
+                  <span className="text-lg md:text-xl font-semibold text-stone-300 whitespace-nowrap">Vanguard Group</span>
+                  <span className="text-lg md:text-xl font-semibold text-stone-300 whitespace-nowrap">Sterling & Co</span>
+                  <span className="text-lg md:text-xl font-semibold text-stone-300 whitespace-nowrap">Horizon Capital</span>
+                  <span className="text-lg md:text-xl font-bold text-stone-300 tracking-wider whitespace-nowrap">BLACKWOOD</span>
+                  <span className="text-lg md:text-xl font-semibold text-stone-300 whitespace-nowrap">Atlas Ventures</span>
+                  <span className="text-lg md:text-xl font-semibold text-stone-300 whitespace-nowrap">Pinnacle Advisory</span>
+                  <span className="text-lg md:text-xl font-bold text-stone-300 tracking-wide whitespace-nowrap">SUMMIT</span>
+                  <span className="text-lg md:text-xl font-semibold text-stone-300 whitespace-nowrap">Evergreen Trust</span>
+                  <span className="text-lg md:text-xl font-bold text-stone-300 whitespace-nowrap">NEXUS</span>
                 </div>
               ))}
             </motion.div>
@@ -171,8 +171,8 @@ const Home: React.FC = () => {
       <ValuePropsVertical />
 
       {/* Methodology Section */}
-      <section className="py-24 lg:py-32 bg-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy-900 to-slate-900"></div>
+      <section className="py-24 lg:py-32 bg-neutral-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-neutral-900"></div>
         <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -182,12 +182,12 @@ const Home: React.FC = () => {
             <div className="lg:w-5/12">
               <div className="lg:sticky lg:top-32">
                 <ScrollReveal direction="left">
-                  <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-[0.2em] mb-4 block">Our Approach</span>
+                  <span className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4 block">Our Approach</span>
                   <h2 className="text-3xl md:text-4xl font-bold font-heading text-white mb-6 leading-tight">
                     From Dialogue to
-                    <span className="text-slate-400"> Decisive Action</span>
+                    <span className="text-neutral-400"> Decisive Action</span>
                   </h2>
-                  <p className="text-slate-400 mb-10 leading-relaxed">
+                  <p className="text-neutral-400 mb-10 leading-relaxed">
                     We guide leadership teams through a structured process that builds understanding, alignment, and the confidence to act decisively together.
                   </p>
                 </ScrollReveal>
@@ -200,7 +200,7 @@ const Home: React.FC = () => {
                       alt="Team collaborating on strategy"
                       className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/20 to-transparent"></div>
                     <div className="absolute bottom-5 left-5 right-5">
                       <div className="flex items-center space-x-3">
                         <CheckCircle2 className="w-5 h-5 text-white" />
@@ -215,7 +215,7 @@ const Home: React.FC = () => {
             {/* Right Column: Timeline */}
             <div className="lg:w-7/12 flex flex-col justify-center">
               <motion.div 
-                className="relative border-l-2 border-slate-700 ml-4 pl-8 py-4 space-y-8"
+                className="relative border-l-2 border-neutral-700 ml-4 pl-8 py-4 space-y-8"
                 variants={timelineContainer}
                 initial="hidden"
                 whileInView="visible"
@@ -250,16 +250,16 @@ const Home: React.FC = () => {
                   >
                     {/* Timeline Dot */}
                     <div className="absolute -left-[41px] top-6 flex items-center justify-center">
-                      <div className="w-8 h-8 rounded-full bg-slate-800 border-2 border-slate-700 group-hover:border-white group-hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-                        <span className="text-[10px] font-bold text-slate-400 group-hover:text-white transition-colors">{step.num}</span>
+                      <div className="w-8 h-8 rounded-full bg-neutral-800 border-2 border-neutral-700 group-hover:border-primary group-hover:bg-primary/10 transition-all duration-300 flex items-center justify-center">
+                        <span className="text-[10px] font-bold text-neutral-400 group-hover:text-primary transition-colors">{step.num}</span>
                       </div>
                     </div>
 
-                    <div className="bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50 hover:border-slate-600 rounded-xl p-6 transition-all duration-300">
-                      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-slate-300 transition-colors">
+                    <div className="bg-neutral-800/50 hover:bg-neutral-800 border border-neutral-700/50 hover:border-neutral-600 rounded-xl p-6 transition-all duration-300">
+                      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-neutral-300 transition-colors">
                         {step.title}
                       </h3>
-                      <p className="text-slate-400 text-sm leading-relaxed">
+                      <p className="text-neutral-400 text-sm leading-relaxed">
                         {step.desc}
                       </p>
                     </div>
@@ -269,7 +269,7 @@ const Home: React.FC = () => {
 
               <ScrollReveal delay={0.3} className="mt-10 ml-4 pl-8">
                 <Link to="/services">
-                  <Button className="!bg-coral !text-white hover:!bg-coral-600 font-semibold shadow-lg">
+                  <Button className="font-semibold shadow-lg">
                     Explore Our Services <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </Link>
@@ -281,13 +281,13 @@ const Home: React.FC = () => {
       </section>
 
       {/* Stats Section - Proven Results */}
-      <section className="py-20 lg:py-24 bg-slate-50 border-y border-slate-100">
+      <section className="py-20 lg:py-24 bg-stone-50 border-y border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal className="text-center mb-12">
-            <span className="text-[11px] font-semibold text-navy uppercase tracking-[0.2em] mb-4 block">
+            <span className="text-[11px] font-semibold text-primary uppercase tracking-[0.2em] mb-4 block">
               Proven Results
             </span>
-            <h2 className="text-2xl md:text-3xl font-bold font-heading text-slate-900">
+            <h2 className="text-2xl md:text-3xl font-bold font-heading text-neutral-900">
               Numbers that speak for themselves
             </h2>
           </ScrollReveal>
@@ -300,18 +300,18 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16">
             <ScrollReveal className="max-w-2xl">
-              <span className="text-[11px] font-semibold text-navy uppercase tracking-[0.2em] mb-4 block">Featured Stories</span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-slate-900 mb-4">
+              <span className="text-[11px] font-semibold text-primary uppercase tracking-[0.2em] mb-4 block">Featured Stories</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-neutral-900 mb-4">
                 Extraordinary Results
               </h2>
-              <p className="text-slate-500 text-lg">
+              <p className="text-neutral-500 text-lg">
                 Real partnerships delivering measurable impact for forward-thinking organisations.
               </p>
             </ScrollReveal>
             
             <ScrollReveal delay={0.2} className="hidden md:block">
               <Link to="/case-studies">
-                <Button variant="outline" className="group !border-slate-300 !text-slate-600 hover:!border-navy hover:!text-navy">
+                <Button variant="outline" className="group !border-stone-300 !text-neutral-600 hover:!border-primary hover:!text-primary">
                   View All Stories <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
@@ -327,7 +327,7 @@ const Home: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="group"
             >
-              <Link to="/case-studies" className="block h-full">
+              <Link to="/case-studies/scaling-strategic-governance" className="block h-full">
                 <div className="relative h-full min-h-[500px] rounded-2xl overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1200" 
@@ -335,14 +335,14 @@ const Home: React.FC = () => {
                     loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/50 to-transparent"></div>
                   
                   {/* Tags */}
                   <div className="absolute top-6 left-6 flex gap-3">
-                    <span className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg text-[10px] font-semibold uppercase tracking-wider text-slate-600">
+                    <span className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg text-[10px] font-semibold uppercase tracking-wider text-neutral-600">
                       Financial Services
                     </span>
-                    <span className="bg-navy text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg">
+                    <span className="bg-primary text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg">
                       Featured
                     </span>
                   </div>
@@ -357,8 +357,8 @@ const Home: React.FC = () => {
                         <span className="text-white font-bold text-4xl">+40%</span>
                         <span className="text-white/70 text-sm">Revenue Growth</span>
                       </div>
-                      <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all">
-                        <ArrowRight className="w-5 h-5 text-white group-hover:text-navy transition-colors" />
+                      <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
+                        <ArrowRight className="w-5 h-5 text-white transition-colors" />
                       </div>
                     </div>
                   </div>
@@ -376,8 +376,8 @@ const Home: React.FC = () => {
                 transition={{ delay: 0.15, duration: 0.6 }}
                 className="group flex-1"
               >
-                <Link to="/case-studies" className="block h-full">
-                  <div className="h-full bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 hover:border-slate-200 hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row">
+                <Link to="/case-studies/unifying-council-strategy" className="block h-full">
+                  <div className="h-full bg-stone-50 rounded-2xl overflow-hidden border border-stone-200 hover:border-stone-300 hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row">
                     {/* Image */}
                     <div className="relative md:w-2/5 h-48 md:h-auto overflow-hidden">
                       <img 
@@ -387,19 +387,19 @@ const Home: React.FC = () => {
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute top-4 left-4">
-                        <span className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg text-[10px] font-semibold uppercase tracking-wider text-slate-600">
+                        <span className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg text-[10px] font-semibold uppercase tracking-wider text-neutral-600">
                           Local Government
                         </span>
                       </div>
                     </div>
                     {/* Content */}
                     <div className="flex-1 p-6 flex flex-col justify-center">
-                      <h3 className="text-xl font-bold font-heading text-slate-900 mb-3 group-hover:text-navy transition-colors">
+                      <h3 className="text-xl font-bold font-heading text-neutral-900 mb-3 group-hover:text-primary transition-colors">
                         Unifying Council Strategy
                       </h3>
                       <div className="flex items-baseline gap-2">
-                        <span className="text-navy font-bold text-3xl">100%</span>
-                        <span className="text-slate-400 text-sm">Consensus Achieved</span>
+                        <span className="text-primary font-bold text-3xl">100%</span>
+                        <span className="text-neutral-400 text-sm">Consensus Achieved</span>
                       </div>
                     </div>
                   </div>
@@ -414,8 +414,8 @@ const Home: React.FC = () => {
                 transition={{ delay: 0.3, duration: 0.6 }}
                 className="group flex-1"
               >
-                <Link to="/case-studies" className="block h-full">
-                  <div className="h-full bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 hover:border-slate-200 hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row">
+                <Link to="/case-studies/sustainability-as-strategy" className="block h-full">
+                  <div className="h-full bg-stone-50 rounded-2xl overflow-hidden border border-stone-200 hover:border-stone-300 hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row">
                     {/* Image */}
                     <div className="relative md:w-2/5 h-48 md:h-auto overflow-hidden">
                       <img 
@@ -425,19 +425,19 @@ const Home: React.FC = () => {
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute top-4 left-4">
-                        <span className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg text-[10px] font-semibold uppercase tracking-wider text-slate-600">
+                        <span className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg text-[10px] font-semibold uppercase tracking-wider text-neutral-600">
                           Retail
                         </span>
                       </div>
                     </div>
                     {/* Content */}
                     <div className="flex-1 p-6 flex flex-col justify-center">
-                      <h3 className="text-xl font-bold font-heading text-slate-900 mb-3 group-hover:text-navy transition-colors">
+                      <h3 className="text-xl font-bold font-heading text-neutral-900 mb-3 group-hover:text-primary transition-colors">
                         Sustainability as Strategy
                       </h3>
                       <div className="flex items-baseline gap-2">
-                        <span className="text-navy font-bold text-3xl">-60%</span>
-                        <span className="text-slate-400 text-sm">Supply Chain Risk</span>
+                        <span className="text-primary font-bold text-3xl">-60%</span>
+                        <span className="text-neutral-400 text-sm">Supply Chain Risk</span>
                       </div>
                     </div>
                   </div>
@@ -448,7 +448,7 @@ const Home: React.FC = () => {
           
           <div className="mt-12 md:hidden text-center">
             <Link to="/case-studies">
-              <Button variant="outline" className="w-full !border-slate-300">View All Stories</Button>
+              <Button variant="outline" className="w-full !border-stone-300">View All Stories</Button>
             </Link>
           </div>
         </div>
@@ -458,22 +458,22 @@ const Home: React.FC = () => {
       <TransformationSection />
 
       {/* Articles/Insights Section */}
-      <section className="py-24 lg:py-32 bg-slate-50">
+      <section className="py-24 lg:py-32 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16">
             <ScrollReveal className="max-w-2xl">
-              <span className="text-[11px] font-semibold text-navy uppercase tracking-[0.2em] mb-4 block">Insights & Perspectives</span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-slate-900 mb-4">
+              <span className="text-[11px] font-semibold text-primary uppercase tracking-[0.2em] mb-4 block">Insights & Perspectives</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-neutral-900 mb-4">
                 Latest Thinking
               </h2>
-              <p className="text-slate-500 text-lg">
+              <p className="text-neutral-500 text-lg">
                 Explore our latest articles on strategic foresight, governance, and leadership.
               </p>
             </ScrollReveal>
             
             <ScrollReveal delay={0.2} className="hidden md:block">
               <Link to="/blog">
-                <Button variant="outline" className="group !border-slate-300 !text-slate-600 hover:!border-navy hover:!text-navy">
+                <Button variant="outline" className="group !border-stone-300 !text-neutral-600 hover:!border-primary hover:!text-primary">
                   View All Articles <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
@@ -544,7 +544,7 @@ const Home: React.FC = () => {
                     />
                     
                     {/* Dark gradient overlay - from top */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900/70 to-slate-900/20"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-neutral-900 via-neutral-900/70 to-neutral-900/20"></div>
                     
                     {/* Content at top */}
                     <div className="absolute top-0 left-0 right-0 p-6">
@@ -554,7 +554,7 @@ const Home: React.FC = () => {
                       </span>
                       
                       {/* Title */}
-                      <h3 className="text-3xl md:text-4xl font-bold font-heading text-white mb-4 leading-[1.1] line-clamp-3 group-hover:text-slate-300 transition-colors">
+                      <h3 className="text-3xl md:text-4xl font-bold font-heading text-white mb-4 leading-[1.1] line-clamp-3 group-hover:text-neutral-300 transition-colors">
                         {article.title}
                       </h3>
                       
@@ -579,8 +579,8 @@ const Home: React.FC = () => {
                           </div>
                         </div>
                         
-                        <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-white transition-all">
-                          <ArrowRight className="w-4 h-4 text-white group-hover:text-navy transition-colors" />
+                        <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-primary transition-all">
+                          <ArrowRight className="w-4 h-4 text-white transition-colors" />
                         </div>
                       </div>
                     </div>
@@ -592,31 +592,31 @@ const Home: React.FC = () => {
           
           <div className="mt-12 md:hidden text-center">
             <Link to="/blog">
-              <Button variant="outline" className="w-full !border-slate-300">View All Articles</Button>
+              <Button variant="outline" className="w-full !border-stone-300">View All Articles</Button>
             </Link>
           </div>
         </div>
       </section>
 
       {/* CTA Section - Final call to action */}
-      <section className="py-24 lg:py-32 bg-navy text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-800 to-slate-900"></div>
+      <section className="py-24 lg:py-32 bg-neutral-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-neutral-900"></div>
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
         
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <ScrollReveal>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-8 leading-tight">
               Ready to move forward
               <br />
-              <span className="text-slate-300">with clarity?</span>
+              <span className="text-neutral-400">with clarity?</span>
             </h2>
-            <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto">
+            <p className="text-xl text-neutral-400 mb-12 max-w-2xl mx-auto">
               Let's discuss how we can help your leadership team navigate complexity and make decisions that drive lasting impact.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
-                <Button size="lg" className="!bg-coral !text-white hover:!bg-coral-600 font-semibold shadow-lg hover:shadow-xl transition-all">
+                <Button size="lg" className="font-semibold shadow-lg hover:shadow-xl transition-all">
                   Get in Touch
                 </Button>
               </Link>
