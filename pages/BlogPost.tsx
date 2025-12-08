@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, Clock, User, Share2, Linkedin, Twitter } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, Clock, User, Share2, Linkedin, Twitter } from 'lucide-react';
 import Button from '../components/ui/Button';
 
 // Blog data - in a real app this would come from a CMS or API
@@ -765,6 +765,69 @@ const blogPosts: Record<string, any> = {
 
       <p>At The Way Forward, we help boards develop these capabilities through facilitated assessments, coaching, and structured development activities that improve both the quality and effectiveness of governance.</p>
     `
+  },
+  "stakeholder-engagement-strategies": {
+    title: "Effective Stakeholder Engagement Strategies",
+    category: "Leadership",
+    date: "October 1, 2024",
+    readTime: "5 min read",
+    author: {
+      name: "Simon Waller",
+      role: "Principal Advisor",
+      image: "/image/simon waller.jpg"
+    },
+    heroImage: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1600",
+    excerpt: "Building meaningful relationships with stakeholders to drive organizational success and sustainable outcomes.",
+    content: `
+      <p class="lead">Effective stakeholder engagement is no longer optional—it's a strategic imperative. Organizations that excel at building and maintaining stakeholder relationships consistently outperform those that don't.</p>
+
+      <h2>Understanding Stakeholder Engagement</h2>
+      <p>Stakeholder engagement goes beyond communication. It's about building genuine relationships, understanding diverse perspectives, and creating shared value. The most successful organizations treat stakeholder engagement as a core competency, not an afterthought.</p>
+
+      <p>In today's interconnected world, stakeholders have more power and voice than ever before. Social media, regulatory scrutiny, and increased transparency mean that organizations must be proactive in managing these relationships.</p>
+
+      <h2>Key Principles of Effective Engagement</h2>
+
+      <h3>1. Identify and Prioritize Stakeholders</h3>
+      <p>Not all stakeholders are equal. Effective engagement starts with understanding who your stakeholders are, what they care about, and how much influence they have over your organization's success. This requires systematic stakeholder mapping and analysis.</p>
+
+      <h3>2. Listen Before Speaking</h3>
+      <p>Too often, organizations approach stakeholder engagement as a one-way communication exercise. The most effective engagement starts with genuine listening—understanding stakeholder concerns, expectations, and aspirations before trying to influence their views.</p>
+
+      <h3>3. Be Transparent and Authentic</h3>
+      <p>Trust is the foundation of effective stakeholder relationships. This requires transparency about your organization's intentions, challenges, and limitations. Stakeholders can spot inauthenticity quickly, and the damage to trust can be lasting.</p>
+
+      <blockquote>
+        "The best stakeholder relationships are built on mutual understanding and shared purpose, not just strategic communication."
+      </blockquote>
+
+      <h2>Building a Stakeholder Engagement Strategy</h2>
+
+      <h3>Step 1: Stakeholder Mapping</h3>
+      <p>Create a comprehensive map of your stakeholders, including their interests, influence, and current relationship quality. This provides the foundation for targeted engagement strategies.</p>
+
+      <h3>Step 2: Define Engagement Objectives</h3>
+      <p>What do you want to achieve through stakeholder engagement? Objectives might include building support for initiatives, gathering input for decisions, managing risks, or creating partnerships.</p>
+
+      <h3>Step 3: Design Engagement Approaches</h3>
+      <p>Different stakeholders require different engagement approaches. Some may need regular formal meetings, while others might prefer informal conversations or digital engagement.</p>
+
+      <h3>Step 4: Implement and Monitor</h3>
+      <p>Execute your engagement strategy while continuously monitoring relationship quality and adjusting your approach based on feedback and results.</p>
+
+      <h2>Common Engagement Challenges</h2>
+      <ul>
+        <li><strong>Conflicting stakeholder interests</strong> - Different stakeholders often have competing priorities that need to be balanced</li>
+        <li><strong>Resource constraints</strong> - Meaningful engagement requires time and resources that may be limited</li>
+        <li><strong>Measuring effectiveness</strong> - The impact of stakeholder engagement can be difficult to quantify</li>
+        <li><strong>Maintaining consistency</strong> - Engagement needs to be sustained over time, not just during crises</li>
+      </ul>
+
+      <h2>The Path Forward</h2>
+      <p>Organizations that invest in stakeholder engagement capabilities build resilience, reduce risk, and create opportunities for collaboration and innovation. In an increasingly complex and interconnected world, these capabilities are essential for long-term success.</p>
+
+      <p>At The Way Forward, we help organizations develop stakeholder engagement strategies that build trust, create value, and support sustainable outcomes.</p>
+    `
   }
 };
 
@@ -899,21 +962,110 @@ const BlogPost: React.FC = () => {
         </div>
       </section>
 
-      {/* Related Articles CTA */}
-      <section className="py-16 bg-slate-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold font-heading text-slate-900 mb-4">
-            Want to explore more insights?
-          </h2>
-          <p className="text-slate-500 mb-8">
-            Discover more articles on strategic foresight, governance, and leadership.
-          </p>
-          <Link to="/blog">
-            <Button variant="outline" className="!border-slate-300">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to All Articles
-            </Button>
-          </Link>
+      {/* Related Articles Section */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-heading text-slate-900 mb-4">
+              Related Articles
+            </h2>
+            <p className="text-slate-500 max-w-2xl mx-auto">
+              Continue exploring insights on strategic foresight, governance, and leadership.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {(() => {
+              // Get related articles (different from current, same category preferred)
+              const currentSlug = slug;
+              const currentCategory = post.category;
+              const allSlugs = Object.keys(blogPosts);
+              
+              // Filter out current article and prioritize same category
+              const otherArticles = allSlugs
+                .filter(s => s !== currentSlug)
+                .map(s => ({ slug: s, ...blogPosts[s] }));
+              
+              const sameCategoryArticles = otherArticles.filter(a => a.category === currentCategory);
+              const differentCategoryArticles = otherArticles.filter(a => a.category !== currentCategory);
+              
+              // Get up to 3 articles, prioritizing same category
+              const relatedArticles = [...sameCategoryArticles, ...differentCategoryArticles].slice(0, 3);
+              
+              return relatedArticles.map((article, i) => (
+                <motion.div
+                  key={article.slug}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ delay: i * 0.1, duration: 0.6 }}
+                  className="group"
+                >
+                  <Link to={`/blog/${article.slug}`} className="block">
+                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
+                      {/* Full-bleed background image */}
+                      <img 
+                        src={article.heroImage} 
+                        alt={article.title}
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      
+                      {/* Dark gradient overlay - from top */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900/70 to-slate-900/20"></div>
+                      
+                      {/* Content at top */}
+                      <div className="absolute top-0 left-0 right-0 p-6">
+                        {/* Category tag */}
+                        <span className="inline-block bg-white/20 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg text-[10px] font-semibold uppercase tracking-wider mb-4">
+                          {article.category}
+                        </span>
+                        
+                        {/* Title */}
+                        <h3 className="text-2xl md:text-3xl font-bold font-heading text-white mb-4 leading-[1.1] line-clamp-3 group-hover:text-slate-300 transition-colors">
+                          {article.title}
+                        </h3>
+                        
+                        {/* Excerpt */}
+                        <p className="text-white/60 text-sm leading-relaxed line-clamp-2">
+                          {article.excerpt}
+                        </p>
+                      </div>
+                      
+                      {/* Author at bottom */}
+                      <div className="absolute bottom-0 left-0 right-0 p-6">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <img 
+                              src={article.author.image} 
+                              alt={article.author.name}
+                              className="w-10 h-10 rounded-full object-cover border-2 border-white/30"
+                            />
+                            <div>
+                              <p className="text-white text-sm font-medium">{article.author.name}</p>
+                              <p className="text-white/60 text-xs">{article.date} · {article.readTime}</p>
+                            </div>
+                          </div>
+                          
+                          <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-white transition-all">
+                            <ArrowRight className="w-4 h-4 text-white group-hover:text-navy transition-colors" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              ));
+            })()}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Link to="/blog">
+              <Button variant="outline" className="!border-slate-300 hover:!bg-slate-100">
+                View All Articles
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>
