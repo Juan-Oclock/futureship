@@ -24,24 +24,35 @@ const ScrollToTop = () => {
 
 const App: React.FC = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-white font-sans text-slate-800">
+    <div className="relative min-h-screen bg-white font-sans text-slate-800">
       <ScrollToTop />
-      <Navbar />
-      <main className="flex-grow">
-        <Suspense fallback={null}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/case-studies" element={<CaseStudies />} />
-            <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-          </Routes>
-        </Suspense>
-      </main>
-      <Footer />
+      
+      {/* Sticky Footer - positioned behind main content */}
+      <div className="fixed bottom-0 left-0 right-0 z-0">
+        <Footer />
+      </div>
+      
+      {/* Main content wrapper - sits above footer */}
+      <div className="relative z-10 flex flex-col min-h-screen bg-white">
+        <Navbar />
+        <main className="flex-grow">
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/case-studies" element={<CaseStudies />} />
+              <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+            </Routes>
+          </Suspense>
+        </main>
+      </div>
+      
+      {/* Spacer for footer reveal - this creates the gap for the sticky footer */}
+      <div className="h-[480px] md:h-[420px] bg-stone-100"></div>
     </div>
   );
 };

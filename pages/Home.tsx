@@ -123,7 +123,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Trust Bar - Single Row, Slower Speed */}
-      <section className="py-10 bg-white border-b border-stone-200 overflow-hidden">
+      <section className="py-10 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
           <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em]">
             Trusted by forward-thinking organisations

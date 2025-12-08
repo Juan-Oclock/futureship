@@ -187,14 +187,14 @@ const ProblemSection: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative bg-slate-50 overflow-hidden"
+      className="relative bg-white overflow-hidden"
     >
       {/* Animated background */}
       <motion.div 
         className="absolute inset-0 pointer-events-none"
         style={{ y: backgroundY }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-slate-100" />
+        <div className="absolute inset-0 bg-white" />
         
         {/* Decorative elements */}
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-r from-gold/5 to-transparent rounded-full blur-3xl" />
@@ -209,20 +209,20 @@ const ProblemSection: React.FC = () => {
           transition={{ duration: 0.8, ease: appleEase }}
           className="max-w-4xl mx-auto text-center"
         >
-          <p className="text-sm md:text-base font-medium text-slate-400 uppercase tracking-[0.2em] mb-6">
+          <p className="text-sm font-medium text-primary uppercase tracking-widest mb-6">
             Strategic Foresight & Governance Advisory
           </p>
           
-          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold font-heading text-slate-900 leading-tight mb-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold font-heading text-neutral-900 leading-tight mb-6">
             Navigating complexity shouldn't
             <br />
-            <span className="text-slate-400">mean losing clarity</span>
+            <span className="text-neutral-400">mean losing clarity</span>
           </h2>
           
-          <p className="text-lg md:text-xl text-slate-500 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-neutral-500 leading-relaxed max-w-2xl mx-auto">
             When governance requirements expand and operational complexity grows, 
             leaders often struggle to maintain strategic focus.
-            <span className="text-slate-800 font-semibold"> We bridge that gap.</span>
+            <span className="text-neutral-800 font-semibold"> We bridge that gap.</span>
           </p>
         </motion.div>
         
@@ -231,7 +231,7 @@ const ProblemSection: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3, ease: appleEase }}
-          className="text-center text-sm font-semibold text-slate-400 uppercase tracking-[0.25em] mt-8 sm:mt-10 lg:mt-16"
+          className="text-center text-sm font-semibold text-neutral-400 uppercase tracking-[0.25em] mt-8 sm:mt-10 lg:mt-16"
         >
           We partner with
         </motion.p>
